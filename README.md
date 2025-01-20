@@ -2,6 +2,7 @@
 
 ## sub2
 ### 파일 구조
+'''plaintext
 com.example.financialledgerapp
 │
 ├───database
@@ -16,3 +17,4 @@ com.example.financialledgerapp
     └───layout
         └───activity_main.xml
         └───item_expense.xml
+'''
