@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editTextAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="금액을 입력하세요"
+        android:inputType="numberDecimal"
+        android:paddingEnd="40dp"/>
+
+    <!-- 원 텍스트 -->
+    <TextView
+        android:id="@+id/amountUnitTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="-30dp"
+        android:layout_marginEnd="10dp"
+        android:text="원"
+        android:textAlignment="viewEnd"
+        android:textSize="16sp" />
+
+    <!-- 상세 내역 입력란 -->
+    <EditText
+        android:id="@+id/editTextDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="상세 내역" />
+
+    <!-- 지출/수입 선택을 위한 RadioGroup -->
+    <RadioGroup
+        android:id="@+id/radioGroupTransactionType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- 지출 선택 RadioButton -->
+        <RadioButton
+            android:id="@+id/radioExpense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="지출"
+            android:checked="true" />  <!-- 기본 선택: 지출 -->
+
+        <!-- 수입 선택 RadioButton -->
+        <RadioButton
+            android:id="@+id/radioIncome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수입" />
+    </RadioGroup>
+
+    <!-- 추가 버튼 -->
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="추가" />
+
+    <!-- 소비 내역을 표시할 ListView -->
+    <ListView
+        android:id="@+id/listViewExpenses"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+</LinearLayout>
