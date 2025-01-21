@@ -69,7 +69,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
 
-            <!-- 숫자 버튼 (1~9, 0) -->
+            <!-- 숫자 버튼 (1~0, 지우기버튼) -->
             <Button
                 android:id="@+id/btn1"
                 android:layout_width="0dp"
@@ -166,7 +166,6 @@
                 android:minHeight="80dp"
                 android:text="0" />
 
-            <!-- 지우기 버튼 -->
             <Button
                 android:id="@+id/btnClear"
                 android:layout_width="0dp"
