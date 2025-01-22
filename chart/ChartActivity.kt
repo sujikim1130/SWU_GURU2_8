@@ -1,8 +1,8 @@
 package com.example.guru2
 
-import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,10 +21,10 @@ class ChartActivity : AppCompatActivity() {
     private lateinit var saveLimitButton: Button
     private lateinit var spendingRecyclerView: RecyclerView
 
-    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var dbManager: DBManager
     private var spendingLimit = 0
     private var currentSpending = 0
-    private val spendingList = mutableListOf<Pair<String, Int>>() // 예: ("식비", 5000)
+    private val spendingList = mutableListOf<Pair<String, Double>>() // 예: ("식비", 5000.0)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +37,11 @@ class ChartActivity : AppCompatActivity() {
         saveLimitButton = findViewById(R.id.saveLimitButton)
         spendingRecyclerView = findViewById(R.id.spendingRecyclerView)
 
+        // DBManager 초기화
+        dbManager = DBManager(this)
+
         // SharedPreferences 설정
-        sharedPreferences = getSharedPreferences("SpendingPrefs", MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("SpendingPrefs", MODE_PRIVATE)
         spendingLimit = sharedPreferences.getInt("spendingLimit", 0)
         updateSpendingText()
 
@@ -56,23 +59,20 @@ class ChartActivity : AppCompatActivity() {
                     Toast.makeText(this, "경고: 현재 지출이 한도를 초과했습니다! 초과 금액: ${excess}원", Toast.LENGTH_LONG).show()
                     currentSpendingText.setTextColor(Color.RED)
                 } else {
-                    // 초과가 아니면 텍스트 색상을 초기화
                     currentSpendingText.setTextColor(Color.BLACK)
                 }
 
                 updateSpendingText()
             } else {
-                Toast.makeText(this, "유효한 한도를 입력하세요.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "한도를 입력해주세요.", Toast.LENGTH_SHORT).show()
             }
         }
 
         // RecyclerView 설정
         setupRecyclerView()
 
-        // 예제 데이터 추가
-        addSpending("식비", 50000)
-        addSpending("교통비", 15000)
-        addSpending("쇼핑", 100000)
+        // 데이터베이스에서 데이터 불러오기
+        loadSpendingDataFromDatabase()
     }
 
     // RecyclerView 초기화
@@ -81,20 +81,25 @@ class ChartActivity : AppCompatActivity() {
         spendingRecyclerView.adapter = SpendingAdapter(spendingList)
     }
 
-    // 지출 추가 함수
-    private fun addSpending(category: String, amount: Int) {
-        spendingList.add(Pair(category, amount))
-        currentSpending += amount
+    // 데이터베이스에서 지출 데이터를 불러오는 함수
+    private fun loadSpendingDataFromDatabase() {
+        val expenses = dbManager.getAllExpenses()
+        currentSpending = 0
+        spendingList.clear()
+
+        for (expense in expenses) {
+            if (expense.transactionType == "expense") {  // 모든 지출 항목을 처리
+                spendingList.add(Pair(expense.detail, expense.amount))
+                currentSpending += expense.amount.toInt()
+            }
+        }
+
         spendingRecyclerView.adapter?.notifyDataSetChanged()
         updateSpendingText()
         updatePieChart()
 
-        // 한도 초과 경고
-        if (spendingLimit > 0 && currentSpending > spendingLimit) {
-            val excess = currentSpending - spendingLimit
-            Toast.makeText(this, "경고: 지출 한도를 초과했습니다! 초과 금액: ${excess}원", Toast.LENGTH_LONG).show()
-            currentSpendingText.setTextColor(Color.RED)
-        }
+        Log.d("ChartActivity", "Current Spending: $currentSpending")
+        Log.d("ChartActivity", "Spending List: $spendingList")
     }
 
     // 현재 지출 텍스트 업데이트
