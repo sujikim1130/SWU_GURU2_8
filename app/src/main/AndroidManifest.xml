@@ -13,7 +13,7 @@
         android:theme="@style/Theme.GURU_8"
         tools:targetApi="35">
         <activity
-            android:name="com.example.yourapp.LoginActivity"
+            android:name="com.example.guru_8.MainActivity"
             android:exported="true"
             tools:ignore="MissingClass">
             <intent-filter>

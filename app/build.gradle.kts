@@ -35,7 +35,13 @@ android {
     }
 }
 
+
 dependencies {
+    val fragment_version = "1.8.3"
+    // Java language implementation
+    implementation("androidx.fragment:fragment:$fragment_version")
+    // Kotlin
+    implementation("androidx.fragment:fragment-ktx:$fragment_version")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -46,3 +52,9 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+
+//dependencies {
+//    implementation 'androidx.appcompat:appcompat:1.6.1
+//    implementation 'androidx.fragment:fragment-ktx:1.5.7'
+//    implementation 'com.google.android.material:material:1.9.0'
+//}
