@@ -1,10 +1,11 @@
-package com.example.guru_8
+package com.example.guru_8.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.guru_8.R
 
 
 class StatsFragment : Fragment() {
