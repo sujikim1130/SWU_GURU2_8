@@ -1,39 +1,27 @@
 package com.example.guru_8
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
-
+import com.example.guru_8.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // BottomNavigationView와 연결
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        // 로그인 버튼 클릭 이벤트
+        binding.btnLogin.setOnClickListener {
+            // 로그인 로직 추가 (예: Firebase 인증)
+        }
 
-        // 첫 화면으로 홈 프래그먼트 설정
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, HomeFragment())
-            .commit()
-
-        // 탭 선택 이벤트 처리
-        bottomNavigationView.setOnItemSelectedListener { menuItem ->
-            val selectedFragment = when (menuItem.itemId) {
-                R.id.nav_home -> HomeFragment()
-                R.id.nav_stats -> StatsFragment()
-                R.id.nav_settings -> SettingsFragment()
-                else -> null
-            }
-            selectedFragment?.let {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, it)
-                    .commit()
-            }
-            true
+        // 회원가입으로 이동 버튼 클릭 이벤트
+        binding.btnGoToSignup.setOnClickListener {
+            val intent = Intent(this, SignupActivity::class.java)
+            startActivity(intent)
         }
     }
 }
