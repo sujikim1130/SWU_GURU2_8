@@ -33,7 +33,7 @@ class ChartFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // 기존 XML 레이아웃 사용
+        // 기존 XML 레이아웃  사용
         return inflater.inflate(R.layout.charactivity_main, container, false)
     }
 
