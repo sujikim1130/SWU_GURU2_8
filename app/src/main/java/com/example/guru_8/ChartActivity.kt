@@ -1,6 +1,7 @@
 package com.example.guru_8
 
 import android.graphics.Color
+import android.os.Build.VERSION_CODES.R
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
@@ -25,7 +26,7 @@ class ChartActivity : AppCompatActivity() {
     private lateinit var dbManager: DBManager
     private var spendingLimit = 0
     private var currentSpending = 0
-    private val spendingList = mutableListOf<Pair<String, Double>>() // 예: ("식비", 5000.0)
+    private val spendingList = mutableListOf<Pair<String, Double>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
