@@ -19,7 +19,7 @@
             tools:ignore="MissingClass">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <categorxy android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <!--        회원가입을 위한 페이지 이동을 위해 추가-->
