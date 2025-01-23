@@ -10,10 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c710b157-74b5-4fb6-9a7d-fb2850cfaf48" name="Changes" comment="commit">
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/GURU_8.app.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/GURU_8.app.unitTest.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sub2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Layout/activity_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Layout/item_expense.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Layout/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/ExpenseAdapter.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/MainActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/DBManager.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/Expense.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,6 +180,15 @@
       <option name="presentableId" value="Default" />
       <updated>1737557216204</updated>
     </task>
+    <task id="LOCAL-00001" summary="commit">
+      <option name="closed" value="true" />
+      <created>1737660961277</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1737660961277</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
