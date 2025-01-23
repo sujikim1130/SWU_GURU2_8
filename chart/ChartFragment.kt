@@ -79,7 +79,7 @@ class ChartFragment : Fragment() {
         // RecyclerView 설정
         setupRecyclerView()
 
-        // 데이터베이스에서 데이터 불러오기
+        // 데이터베이스에서 데이터 불러옴
         loadSpendingDataFromDatabase()
     }
 
