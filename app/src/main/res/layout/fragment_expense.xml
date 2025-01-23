@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editTextAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="금액을 입력하세요"
+        android:inputType="numberDecimal"
+        android:paddingEnd="40dp"/>
+
+    <TextView
+        android:id="@+id/amountUnitTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="-30dp"
+        android:layout_marginEnd="10dp"
+        android:text="원"
+        android:textAlignment="viewEnd"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/editTextDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="상세 내역"
+        android:privateImeOptions="defaultInputMode = korean"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroupTransactionType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioExpense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="지출"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/radioIncome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수입" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/categoryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:text="카테고리를 선택하세요"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <GridLayout
+        android:id="@+id/categoryOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        android:rowCount="2"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+
+        <RadioButton
+            android:id="@+id/categoryOpt1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="식비" />
+
+        <RadioButton
+            android:id="@+id/categoryOpt2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="생활용품" />
+
+        <RadioButton
+            android:id="@+id/categoryOpt3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="건강" />
+
+        <RadioButton
+            android:id="@+id/categoryOpt4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="자기계발" />
+
+        <RadioButton
+            android:id="@+id/categoryOpt5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="교통비" />
+
+        <RadioButton
+            android:id="@+id/categoryOpt6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="꾸밈비" />
+
+        <RadioButton
+            android:id="@+id/categoryOpt7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="문화생활" />
+
+        <RadioButton
+            android:id="@+id/categoryOpt8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:checked="true"
+            android:text="기타" />
+    </GridLayout>
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="추가" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewExpenses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical" />
+
+
+</LinearLayout>
