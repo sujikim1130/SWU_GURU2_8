@@ -14,15 +14,18 @@
         android:theme="@style/Theme.GURU_8"
         tools:targetApi="35">
         <activity
+            android:name=".ChartActivity"
+            android:exported="false" />
+        <activity
             android:name=".FragmentActivity"
             android:exported="true"
             tools:ignore="MissingClass">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <categorxy android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!--        회원가입을 위한 페이지 이동을 위해 추가-->
+        </activity> <!-- 회원가입을 위한 페이지 이동을 위해 추가 -->
         <activity android:name=".SignupActivity" />
     </application>
 
