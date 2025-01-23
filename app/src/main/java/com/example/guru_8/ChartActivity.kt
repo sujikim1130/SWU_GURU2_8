@@ -21,6 +21,7 @@ class ChartActivity : AppCompatActivity() {
     private lateinit var saveLimitButton: Button
     private lateinit var spendingRecyclerView: RecyclerView
 
+
     private lateinit var dbManager: DBManager
     private var spendingLimit = 0
     private var currentSpending = 0

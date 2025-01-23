@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 로그인 버튼 클릭 이벤트  
+        // 로그인 버튼 클릭 이벤트
         binding.btnLogin.setOnClickListener {
             // 로그인 로직 추가 (예: Firebase 인증)
         }
