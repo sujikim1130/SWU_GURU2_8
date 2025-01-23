@@ -55,6 +55,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+<<<<<<< HEAD
+=======
+
+    implementation(libs.mpandroidchart) //차트
+>>>>>>> 29cfd2a4639170523299994044e5e6bafa70b24e
 }
 
 //dependencies {
