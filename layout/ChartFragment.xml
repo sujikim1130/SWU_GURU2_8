@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toStartOf="@id/saveLimitButton"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"/>
 
     <!-- 한도 설정 저장 버튼 -->
     <Button

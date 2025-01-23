@@ -50,7 +50,7 @@ class ChartFragment : Fragment() {
         // DBManager 초기화
         dbManager = DBManager(requireContext())
 
-        // SharedPreferences 설정
+        // SharedPreferences설정
         val sharedPreferences = requireContext().getSharedPreferences("SpendingPrefs", AppCompatActivity.MODE_PRIVATE)
         spendingLimit = sharedPreferences.getInt("spendingLimit", 0)
         updateSpendingText()

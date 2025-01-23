@@ -14,7 +14,7 @@ class SpendingAdapter(private val spendingList: MutableList<Pair<String, Double>
         return SpendingViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: SpendingViewHolder, position: Int) { //카테고리와 금액 데이터를 표시
+    override fun onBindViewHolder(holder: SpendingViewHolder, position: Int) {  //카테고리와 금액 데이터를 표시
         val (category, amount) = spendingList[position]
         holder.categoryText.text = category
         holder.amountText.text = "${amount}원"
