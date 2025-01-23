@@ -3,8 +3,11 @@ package com.example.guru2
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.mikephil.charting.charts.PieChart
@@ -13,7 +16,7 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
 
-class ChartActivity : AppCompatActivity() {
+class ChartFragment : Fragment() {
 
     private lateinit var pieChart: PieChart
     private lateinit var currentSpendingText: TextView
@@ -24,24 +27,31 @@ class ChartActivity : AppCompatActivity() {
     private lateinit var dbManager: DBManager
     private var spendingLimit = 0
     private var currentSpending = 0
-    private val spendingList = mutableListOf<Pair<String, Double>>() // 예: ("식비", 5000.0)
+    private val spendingList = mutableListOf<Pair<String, Double>>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.charactivity_main)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // 기존 XML 레이아웃 사용
+        return inflater.inflate(R.layout.charactivity_main, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         // 뷰 초기화
-        pieChart = findViewById(R.id.pieChart)
-        currentSpendingText = findViewById(R.id.currentSpendingText)
-        limitInput = findViewById(R.id.limitInput)
-        saveLimitButton = findViewById(R.id.saveLimitButton)
-        spendingRecyclerView = findViewById(R.id.spendingRecyclerView)
+        pieChart = view.findViewById(R.id.pieChart)
+        currentSpendingText = view.findViewById(R.id.currentSpendingText)
+        limitInput = view.findViewById(R.id.limitInput)
+        saveLimitButton = view.findViewById(R.id.saveLimitButton)
+        spendingRecyclerView = view.findViewById(R.id.spendingRecyclerView)
 
         // DBManager 초기화
-        dbManager = DBManager(this)
+        dbManager = DBManager(requireContext())
 
         // SharedPreferences 설정
-        val sharedPreferences = getSharedPreferences("SpendingPrefs", MODE_PRIVATE)
+        val sharedPreferences = requireContext().getSharedPreferences("SpendingPrefs", AppCompatActivity.MODE_PRIVATE)
         spendingLimit = sharedPreferences.getInt("spendingLimit", 0)
         updateSpendingText()
 
@@ -51,20 +61,18 @@ class ChartActivity : AppCompatActivity() {
             if (limitText.isNotEmpty() && limitText.toIntOrNull() != null && limitText.toInt() >= 0) {
                 spendingLimit = limitText.toInt()
                 sharedPreferences.edit().putInt("spendingLimit", spendingLimit).apply()
-                Toast.makeText(this, "한도가 저장되었습니다: ${spendingLimit}원", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "한도가 저장되었습니다: ${spendingLimit}원", Toast.LENGTH_SHORT).show()
 
-                // 한도 변경 후 현재 지출이 초과되었는지 확인
                 if (currentSpending > spendingLimit) {
                     val excess = currentSpending - spendingLimit
-                    Toast.makeText(this, "경고: 현재 지출이 한도를 초과했습니다! 초과 금액: ${excess}원", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "경고: 현재 지출이 한도를 초과했습니다! 초과 금액: ${excess}원", Toast.LENGTH_LONG).show()
                     currentSpendingText.setTextColor(Color.RED)
                 } else {
                     currentSpendingText.setTextColor(Color.BLACK)
                 }
-
                 updateSpendingText()
             } else {
-                Toast.makeText(this, "한도를 입력해주세요.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "한도를 입력해주세요.", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -75,20 +83,18 @@ class ChartActivity : AppCompatActivity() {
         loadSpendingDataFromDatabase()
     }
 
-    // RecyclerView 초기화
     private fun setupRecyclerView() {
-        spendingRecyclerView.layoutManager = LinearLayoutManager(this)
+        spendingRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         spendingRecyclerView.adapter = SpendingAdapter(spendingList)
     }
 
-    // 데이터베이스에서 지출 데이터를 불러오는 함수
     private fun loadSpendingDataFromDatabase() {
         val expenses = dbManager.getAllExpenses()
         currentSpending = 0
         spendingList.clear()
 
         for (expense in expenses) {
-            if (expense.transactionType == "expense") {  // 모든 지출 항목을 처리
+            if (expense.transactionType == "expense") {
                 spendingList.add(Pair(expense.detail, expense.amount))
                 currentSpending += expense.amount.toInt()
             }
@@ -98,16 +104,14 @@ class ChartActivity : AppCompatActivity() {
         updateSpendingText()
         updatePieChart()
 
-        Log.d("ChartActivity", "Current Spending: $currentSpending")
-        Log.d("ChartActivity", "Spending List: $spendingList")
+        Log.d("ChartFragment", "Current Spending: $currentSpending")
+        Log.d("ChartFragment", "Spending List: $spendingList")
     }
 
-    // 현재 지출 텍스트 업데이트
     private fun updateSpendingText() {
         currentSpendingText.text = "현재 지출: ${currentSpending}원 / 한도: ${spendingLimit}원"
     }
 
-    // 원형 차트 업데이트
     private fun updatePieChart() {
         val entries = spendingList.map { PieEntry(it.second.toFloat(), it.first) }
         val dataSet = PieDataSet(entries, "지출 비중")
