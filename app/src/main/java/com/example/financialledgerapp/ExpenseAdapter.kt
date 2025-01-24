@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.financialledgerapp.Expense
+import androidx.core.content.ContextCompat
 
 class ExpenseAdapter(private var expenses: List<Expense>) : RecyclerView.Adapter<ExpenseAdapter.ExpenseViewHolder>() {
 
@@ -27,6 +27,17 @@ class ExpenseAdapter(private var expenses: List<Expense>) : RecyclerView.Adapter
             "- ${expense.amount.toInt()}원"
         }
         holder.textAmount.text = amountText
+
+        // 색상 변경: 수입이면 파랑색, 지출이면 빨간색
+        val textColor = if (expense.transactionType == "수입") {
+            R.color.blue
+        } else {
+            R.color.red
+        }
+
+        // 텍스트 색상 변경
+        holder.textDetail.setTextColor(ContextCompat.getColor(holder.itemView.context, textColor))
+        holder.textAmount.setTextColor(ContextCompat.getColor(holder.itemView.context, textColor))
     }
 
     override fun getItemCount(): Int {
