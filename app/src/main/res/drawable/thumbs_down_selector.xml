@@ -1,0 +1,4 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="#FF3B30" android:state_selected="true"/> <!-- 선택 시 빨간색 -->
+    <item android:color="#808080"/> <!-- 기본 회색 -->
+</selector>
