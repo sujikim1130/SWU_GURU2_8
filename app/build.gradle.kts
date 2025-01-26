@@ -37,8 +37,9 @@ android {
 //xml과 앱의 데이터 소스를 직접 연결하기 위해 추가
     buildFeatures {
         viewBinding = true
+        }
     }
-}
+
 
 
 dependencies {
@@ -56,9 +57,3 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
-
-//dependencies {
-//    implementation 'androidx.appcompat:appcompat:1.6.1
-//    implementation 'androidx.fragment:fragment-ktx:1.5.7'
-//    implementation 'com.google.android.material:material:1.9.0'
-//}
