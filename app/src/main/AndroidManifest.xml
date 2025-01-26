@@ -24,6 +24,7 @@
         </activity>
         <!--        회원가입을 위한 페이지 이동을 위해 추가-->
         <activity android:name=".SignupActivity" />
+        <activity android:name=".FragmentActivity" />
     </application>
 
 </manifest>
