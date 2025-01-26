@@ -14,15 +14,32 @@
         android:theme="@style/Theme.GURU_8"
         tools:targetApi="35">
         <activity
+<<<<<<< HEAD
             android:name=".MainActivity"
+=======
+<<<<<<< HEAD
+=======
+            android:name=".ChartActivity"
+            android:exported="false" />
+        <activity
+>>>>>>> 29cfd2a4639170523299994044e5e6bafa70b24e
+            android:name=".FragmentActivity"
+>>>>>>> main
             android:exported="true"
             tools:ignore="MissingClass">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+<<<<<<< HEAD
+                <categorxy android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <!--        회원가입을 위한 페이지 이동을 위해 추가-->
+=======
+
+                <categorxy android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- 회원가입을 위한 페이지 이동을 위해 추가 -->
+>>>>>>> 29cfd2a4639170523299994044e5e6bafa70b24e
         <activity android:name=".SignupActivity" />
         <activity android:name=".FragmentActivity" />
     </application>
