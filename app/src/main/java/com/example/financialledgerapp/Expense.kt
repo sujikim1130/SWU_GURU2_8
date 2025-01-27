@@ -5,7 +5,9 @@ data class Expense(
     val amount: Double,
     val detail: String,
     val transactionType: String,
-    val category: String
+    val category: String,
+    var isSelectedThumbsUp: Boolean = false,  // ThumbsUp 선택 여부
+    var isSelectedThumbsDown: Boolean = false  // ThumbsDown 선택 여부
 ) {
     // 'toString()' 메서드 오버라이드
     override fun toString(): String {

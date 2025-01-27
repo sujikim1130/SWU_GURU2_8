@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:padding="8dp">
 
@@ -21,4 +22,26 @@
         android:textSize="18sp"
         android:gravity="end"
         android:text="- 0원" />
+
+    <!-- 만족도 버튼 (이모지 사용) -->
+    <ImageView
+        android:id="@+id/thumbsUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/thumbs_up"
+        app:tint="@color/blue"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <ImageView
+        android:id="@+id/thumbsDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/thumbs_up"
+        app:tint="@color/red"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true" />
+
 </LinearLayout>
