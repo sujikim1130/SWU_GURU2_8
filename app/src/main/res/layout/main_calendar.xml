@@ -5,107 +5,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- 제목 -->
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center"
-        android:text="저축 캘린더"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#9E28B3"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- 달력 -->
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <!-- 일기 날짜 -->
+    <!-- 선택한 날짜를 표시하는 텍스트뷰 -->
     <TextView
         android:id="@+id/diaryTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="저축 캘린더"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- 내용 입력 -->
-    <EditText
-        android:id="@+id/contextEditText"
+    <!-- ProgressBar -->
+    <ProgressBar
+        android:id="@+id/spendingProgressBar"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
         android:layout_width="0dp"
-        android:layout_height="116dp"
-        android:hint="내용을 입력하세요."
-        android:inputType="textMultiLine"
+        android:layout_height="20dp"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:max="100"
+        android:progressDrawable="@drawable/progress_bar_style"
         app:layout_constraintTop_toBottomOf="@+id/diaryTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- 내용 표시 -->
+    <!-- 현재 지출 상태를 표시하는 텍스트뷰 -->
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/currentSpendingTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/contextEditText"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/spendingProgressBar"
         app:layout_constraintStart_toStartOf="parent"
-        android:visibility="gone" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- 저장 버튼 -->
-    <Button
-        android:id="@+id/save_Btn"
+    <!-- 달력 -->
+    <CalendarView
+        android:id="@+id/calendarView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="저장"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/contextEditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!-- 수정 버튼 -->
-    <Button
-        android:id="@+id/cha_Btn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="수정"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/currentSpendingTextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/save_Btn" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- 삭제 버튼 -->
-    <Button
-        android:id="@+id/del_Btn"
+    <!-- Fragment가 표시될 FrameLayout -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="삭제"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/save_Btn" />
-
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

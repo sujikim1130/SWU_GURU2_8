@@ -1,7 +1,7 @@
 package com.example.guru_8
 
+import android.content.Intent
 import android.graphics.Color
-import android.os.Build.VERSION_CODES.R
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
@@ -21,7 +21,7 @@ class ChartActivity : AppCompatActivity() {
     private lateinit var limitInput: EditText
     private lateinit var saveLimitButton: Button
     private lateinit var spendingRecyclerView: RecyclerView
-
+    private lateinit var openCalendarButton: Button
 
     private lateinit var dbManager: DBManager
     private var spendingLimit = 0
@@ -38,6 +38,7 @@ class ChartActivity : AppCompatActivity() {
         limitInput = findViewById(R.id.limitInput)
         saveLimitButton = findViewById(R.id.saveLimitButton)
         spendingRecyclerView = findViewById(R.id.spendingRecyclerView)
+        openCalendarButton = findViewById(R.id.openCalendarButton)
 
         // DBManager 초기화
         dbManager = DBManager(this)
@@ -75,6 +76,14 @@ class ChartActivity : AppCompatActivity() {
 
         // 데이터베이스에서 데이터 불러오기
         loadSpendingDataFromDatabase()
+
+        // "달력 보기" 버튼 클릭 이벤트
+        openCalendarButton.setOnClickListener {
+            val intent = Intent(this, MainCalendar::class.java)
+            intent.putExtra("spendingLimit", spendingLimit)
+            intent.putExtra("currentSpending", currentSpending)
+            startActivity(intent)
+        }
     }
 
     // RecyclerView 초기화
@@ -90,7 +99,7 @@ class ChartActivity : AppCompatActivity() {
         spendingList.clear()
 
         for (expense in expenses) {
-            if (expense.transactionType == "expense") {  // 모든 지출 항목을 처리
+            if (expense.transactionType == "expense") {
                 spendingList.add(Pair(expense.detail, expense.amount))
                 currentSpending += expense.amount.toInt()
             }

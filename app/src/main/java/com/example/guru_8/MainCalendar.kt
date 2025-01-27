@@ -1,20 +1,23 @@
 package com.example.guru_8
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.*
+import android.widget.CalendarView
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.guru_8.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 
 class MainCalendar : AppCompatActivity() {
 
     private lateinit var calendarView: CalendarView
+    private lateinit var progressBar: ProgressBar
     private lateinit var diaryTextView: TextView
-    private lateinit var contextEditText: EditText
-    private lateinit var textView2: TextView
-    private lateinit var saveBtn: Button
-    private lateinit var chaBtn: Button
-    private lateinit var delBtn: Button
+    private lateinit var currentSpendingTextView: TextView
+
+    private var spendingLimit = 0
+    private var currentSpending = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,57 +25,43 @@ class MainCalendar : AppCompatActivity() {
 
         // 뷰 초기화
         calendarView = findViewById(R.id.calendarView)
+        progressBar = findViewById(R.id.spendingProgressBar)
         diaryTextView = findViewById(R.id.diaryTextView)
-        contextEditText = findViewById(R.id.contextEditText)
-        textView2 = findViewById(R.id.textView2)
-        saveBtn = findViewById(R.id.save_Btn)
-        chaBtn = findViewById(R.id.cha_Btn)
-        delBtn = findViewById(R.id.del_Btn)
+        currentSpendingTextView = findViewById(R.id.currentSpendingTextView)
 
-        // 초기 visibility 설정
-        textView2.visibility = View.GONE
-        chaBtn.visibility = View.GONE
-        delBtn.visibility = View.GONE
+        // ChartActivity에서 데이터 가져오기
+        spendingLimit = intent.getIntExtra("spendingLimit", 0)
+        currentSpending = intent.getIntExtra("currentSpending", 0)
+
+        // ProgressBar와 텍스트 업데이트
+        updateProgressBar()
 
         // 달력 날짜 선택 이벤트
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            diaryTextView.text = "선택된 날짜: $year-${month + 1}-$dayOfMonth"
-            contextEditText.text.clear()
-            textView2.visibility = View.GONE
-            saveBtn.visibility = View.VISIBLE
-            chaBtn.visibility = View.GONE
-            delBtn.visibility = View.GONE
+            val selectedDate = "$year-${month + 1}-$dayOfMonth"
+            navigateToFragment(HomeFragment.newInstance(selectedDate))
+        }
+    }
+
+    private fun updateProgressBar() {
+        if (spendingLimit > 0) {
+            val progress = (currentSpending.toDouble() / spendingLimit * 100).toInt()
+            progressBar.max = 100
+            progressBar.progress = progress
         }
 
-        // 저장 버튼 클릭
-        saveBtn.setOnClickListener {
-            val content = contextEditText.text.toString()
-            textView2.text = content
-            textView2.visibility = View.VISIBLE
-            contextEditText.visibility = View.GONE
-            saveBtn.visibility = View.GONE
-            chaBtn.visibility = View.VISIBLE
-            delBtn.visibility = View.VISIBLE
-        }
+        // 지출 상태 업데이트
+        currentSpendingTextView.text = getString(
+            R.string.current_spending_status,
+            currentSpending,
+            spendingLimit
+        )
+    }
 
-        // 수정 버튼 클릭
-        chaBtn.setOnClickListener {
-            contextEditText.visibility = View.VISIBLE
-            textView2.visibility = View.GONE
-            saveBtn.visibility = View.VISIBLE
-            chaBtn.visibility = View.GONE
-            delBtn.visibility = View.GONE
-        }
-
-        // 삭제 버튼 클릭
-        delBtn.setOnClickListener {
-            contextEditText.text.clear()
-            textView2.text = ""
-            textView2.visibility = View.GONE
-            contextEditText.visibility = View.VISIBLE
-            saveBtn.visibility = View.VISIBLE
-            chaBtn.visibility = View.GONE
-            delBtn.visibility = View.GONE
+    private fun navigateToFragment(fragment: Fragment) {
+        supportFragmentManager.commit {
+            replace(R.id.fragment_container, fragment)
+            addToBackStack(null)
         }
     }
 }
