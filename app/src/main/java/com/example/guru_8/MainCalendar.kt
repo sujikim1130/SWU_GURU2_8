@@ -1,4 +1,5 @@
-package com.example.guru_8
+import com.example.guru_8.R
+import com.example.guru_8.fragment.HomeFragment
 
 import android.content.Intent
 import android.os.Bundle
