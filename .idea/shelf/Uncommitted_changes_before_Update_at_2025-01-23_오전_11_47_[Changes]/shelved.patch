@@ -1,0 +1,792 @@
+Index: proguard-rules.pro
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/proguard-rules.pro b/proguard-rules.pro
+new file mode 100644
+--- /dev/null	(date 1737600343480)
++++ b/proguard-rules.pro	(date 1737600343480)
+@@ -0,0 +1,21 @@
++# Add project specific ProGuard rules here.
++# You can control the set of applied configuration files using the
++# proguardFiles setting in build.gradle.
++#
++# For more details, see
++#   http://developer.android.com/guide/developing/tools/proguard.html
++
++# If your project uses WebView with JS, uncomment the following
++# and specify the fully qualified class name to the JavaScript interface
++# class:
++#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
++#   public *;
++#}
++
++# Uncomment this to preserve the line number information for
++# debugging stack traces.
++#-keepattributes SourceFile,LineNumberTable
++
++# If you keep the line number information, uncomment this to
++# hide the original source file name.
++#-renamesourcefileattribute SourceFile
+\ No newline at end of file
+Index: SWU_GURU2_8.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SWU_GURU2_8.iml b/SWU_GURU2_8.iml
+new file mode 100644
+--- /dev/null	(date 1737600343469)
++++ b/SWU_GURU2_8.iml	(date 1737600343469)
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4">
++  <component name="NewModuleRootManager" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$/UI" isTestSource="false" packagePrefix="com.example.financialledgerapp" />
++      <sourceFolder url="file://$MODULE_DIR$/database" isTestSource="false" packagePrefix="com.example.financialledgerapp" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"VcsDirectoryMappings\">\r\n    <mapping directory=\"$PROJECT_DIR$\" vcs=\"Git\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+--- a/.idea/vcs.xml	(revision cd7eefa3956f931289bb98a0fe8070002e5a12c9)
++++ b/.idea/vcs.xml	(date 1737600396099)
+@@ -1,6 +1,10 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="VcsDirectoryMappings">
++<<<<<<< HEAD
+     <mapping directory="$PROJECT_DIR$" vcs="Git" />
++=======
++    <mapping directory="" vcs="Git" />
++>>>>>>> 67201b4a309acf661235bdcea298f0048d570011
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_21\" default=\"true\" project-jdk-name=\"jbr-21\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision cd7eefa3956f931289bb98a0fe8070002e5a12c9)
++++ b/.idea/misc.xml	(date 1737600397948)
+@@ -1,10 +1,15 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++<<<<<<< HEAD
+   <component name="ExternalStorageConfigurationManager" enabled="true" />
+   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="jbr-21" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+     <option name="id" value="Android" />
++=======
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="jbr-21" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++>>>>>>> 67201b4a309acf661235bdcea298f0048d570011
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1737600416315)
++++ b/.idea/modules.xml	(date 1737600416315)
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GURU_8.iml" filepath="$PROJECT_DIR$/.idea/modules/GURU_8.iml" />
++      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/GURU_8.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/GURU_8.app.iml" />
++      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/GURU_8.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/GURU_8.app.androidTest.iml" />
++      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/GURU_8.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/GURU_8.app.main.iml" />
++      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/GURU_8.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/GURU_8.app.unitTest.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: chart/SpendingAdapter.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/chart/SpendingAdapter.kt b/chart/SpendingAdapter.kt
+new file mode 100644
+--- /dev/null	(date 1737600343475)
++++ b/chart/SpendingAdapter.kt	(date 1737600343475)
+@@ -0,0 +1,29 @@
++package com.example.guru2
++
++import android.view.LayoutInflater
++import android.view.View
++import android.view.ViewGroup
++import android.widget.TextView
++import androidx.recyclerview.widget.RecyclerView
++
++class SpendingAdapter(private val spendingList: MutableList<Pair<String, Double>>) :
++    RecyclerView.Adapter<SpendingAdapter.SpendingViewHolder>() {
++
++    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpendingViewHolder {
++        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_spending, parent, false)
++        return SpendingViewHolder(view)
++    }
++
++    override fun onBindViewHolder(holder: SpendingViewHolder, position: Int) {  //카테고리와 금액 데이터를 표시
++        val (category, amount) = spendingList[position]
++        holder.categoryText.text = category
++        holder.amountText.text = "${amount}원"
++    }
++
++    override fun getItemCount(): Int = spendingList.size
++
++    class SpendingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) { //각 아이템을 저장하고 관리하는 클래스
++        val categoryText: TextView = itemView.findViewById(R.id.categoryText)
++        val amountText: TextView = itemView.findViewById(R.id.amountText)
++    }
++}
+\ No newline at end of file
+Index: .idea/caches/deviceStreaming.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/caches/deviceStreaming.xml b/.idea/caches/deviceStreaming.xml
+new file mode 100644
+--- /dev/null	(date 1737600343459)
++++ b/.idea/caches/deviceStreaming.xml	(date 1737600343459)
+@@ -0,0 +1,362 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="DeviceStreaming">
++    <option name="deviceSelectionList">
++      <list>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="27" />
++          <option name="brand" value="DOCOMO" />
++          <option name="codename" value="F01L" />
++          <option name="id" value="F01L" />
++          <option name="manufacturer" value="FUJITSU" />
++          <option name="name" value="F-01L" />
++          <option name="screenDensity" value="360" />
++          <option name="screenX" value="720" />
++          <option name="screenY" value="1280" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="OPPO" />
++          <option name="codename" value="OP573DL1" />
++          <option name="id" value="OP573DL1" />
++          <option name="manufacturer" value="OPPO" />
++          <option name="name" value="CPH2557" />
++          <option name="screenDensity" value="480" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="28" />
++          <option name="brand" value="DOCOMO" />
++          <option name="codename" value="SH-01L" />
++          <option name="id" value="SH-01L" />
++          <option name="manufacturer" value="SHARP" />
++          <option name="name" value="AQUOS sense2 SH-01L" />
++          <option name="screenDensity" value="480" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2160" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="Lenovo" />
++          <option name="codename" value="TB370FU" />
++          <option name="id" value="TB370FU" />
++          <option name="manufacturer" value="Lenovo" />
++          <option name="name" value="Tab P12" />
++          <option name="screenDensity" value="340" />
++          <option name="screenX" value="1840" />
++          <option name="screenY" value="2944" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="31" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="a51" />
++          <option name="id" value="a51" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy A51" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="akita" />
++          <option name="id" value="akita" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 8a" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="b0q" />
++          <option name="id" value="b0q" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy S22 Ultra" />
++          <option name="screenDensity" value="600" />
++          <option name="screenX" value="1440" />
++          <option name="screenY" value="3088" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="32" />
++          <option name="brand" value="google" />
++          <option name="codename" value="bluejay" />
++          <option name="id" value="bluejay" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 6a" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="caiman" />
++          <option name="id" value="caiman" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 9 Pro" />
++          <option name="screenDensity" value="360" />
++          <option name="screenX" value="960" />
++          <option name="screenY" value="2142" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="comet" />
++          <option name="id" value="comet" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 9 Pro Fold" />
++          <option name="screenDensity" value="390" />
++          <option name="screenX" value="2076" />
++          <option name="screenY" value="2152" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="29" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="crownqlteue" />
++          <option name="id" value="crownqlteue" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy Note9" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="2220" />
++          <option name="screenY" value="1080" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="dm3q" />
++          <option name="id" value="dm3q" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy S23 Ultra" />
++          <option name="screenDensity" value="600" />
++          <option name="screenX" value="1440" />
++          <option name="screenY" value="3088" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="e1q" />
++          <option name="id" value="e1q" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy S24" />
++          <option name="screenDensity" value="480" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2340" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="e3q" />
++          <option name="id" value="e3q" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy S24 Ultra" />
++          <option name="screenDensity" value="450" />
++          <option name="screenX" value="1440" />
++          <option name="screenY" value="3120" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="google" />
++          <option name="codename" value="eos" />
++          <option name="id" value="eos" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Eos" />
++          <option name="screenDensity" value="320" />
++          <option name="screenX" value="384" />
++          <option name="screenY" value="384" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="google" />
++          <option name="codename" value="felix" />
++          <option name="id" value="felix" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel Fold" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="2208" />
++          <option name="screenY" value="1840" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="felix" />
++          <option name="id" value="felix" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel Fold" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="2208" />
++          <option name="screenY" value="1840" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="google" />
++          <option name="codename" value="felix_camera" />
++          <option name="id" value="felix_camera" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel Fold (Camera-enabled)" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="2208" />
++          <option name="screenY" value="1840" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="gts8uwifi" />
++          <option name="id" value="gts8uwifi" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy Tab S8 Ultra" />
++          <option name="screenDensity" value="320" />
++          <option name="screenX" value="1848" />
++          <option name="screenY" value="2960" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="husky" />
++          <option name="id" value="husky" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 8 Pro" />
++          <option name="screenDensity" value="390" />
++          <option name="screenX" value="1008" />
++          <option name="screenY" value="2244" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="30" />
++          <option name="brand" value="motorola" />
++          <option name="codename" value="java" />
++          <option name="id" value="java" />
++          <option name="manufacturer" value="Motorola" />
++          <option name="name" value="G20" />
++          <option name="screenDensity" value="280" />
++          <option name="screenX" value="720" />
++          <option name="screenY" value="1600" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="komodo" />
++          <option name="id" value="komodo" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 9 Pro XL" />
++          <option name="screenDensity" value="360" />
++          <option name="screenX" value="1008" />
++          <option name="screenY" value="2244" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="google" />
++          <option name="codename" value="lynx" />
++          <option name="id" value="lynx" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 7a" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="31" />
++          <option name="brand" value="google" />
++          <option name="codename" value="oriole" />
++          <option name="id" value="oriole" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 6" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="google" />
++          <option name="codename" value="panther" />
++          <option name="id" value="panther" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 7" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="q5q" />
++          <option name="id" value="q5q" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy Z Fold5" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1812" />
++          <option name="screenY" value="2176" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="q6q" />
++          <option name="id" value="q6q" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy Z Fold6" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1856" />
++          <option name="screenY" value="2160" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="30" />
++          <option name="brand" value="google" />
++          <option name="codename" value="r11" />
++          <option name="id" value="r11" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel Watch" />
++          <option name="screenDensity" value="320" />
++          <option name="screenX" value="384" />
++          <option name="screenY" value="384" />
++          <option name="type" value="WEAR_OS" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="30" />
++          <option name="brand" value="google" />
++          <option name="codename" value="redfin" />
++          <option name="id" value="redfin" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 5" />
++          <option name="screenDensity" value="440" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2340" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="shiba" />
++          <option name="id" value="shiba" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 8" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="google" />
++          <option name="codename" value="tangorpro" />
++          <option name="id" value="tangorpro" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel Tablet" />
++          <option name="screenDensity" value="320" />
++          <option name="screenX" value="1600" />
++          <option name="screenY" value="2560" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="tokay" />
++          <option name="id" value="tokay" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 9" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2424" />
++        </PersistentDeviceSelectionData>
++      </list>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: layout/ChartFragment.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/layout/ChartFragment.xml b/layout/ChartFragment.xml
+new file mode 100644
+--- /dev/null	(date 1737600343477)
++++ b/layout/ChartFragment.xml	(date 1737600343477)
+@@ -0,0 +1,72 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".ChartActivity">
++
++    <!-- 월별 통계를 표시할 원형 차트 -->
++    <com.github.mikephil.charting.charts.PieChart
++        android:id="@+id/pieChart"
++        android:layout_width="0dp"
++        android:layout_height="300dp"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        android:layout_marginTop="16dp"/>
++
++    <!-- 현재 지출 상황 표시 -->
++    <TextView
++        android:id="@+id/currentSpendingText"
++        android:layout_width="0dp"
++        android:layout_height="wrap_content"
++        android:text="현재 지출: 0원 / 한도: 0원"
++        android:textSize="16sp"
++        android:textColor="@color/black"
++        android:gravity="center"
++        app:layout_constraintTop_toBottomOf="@id/pieChart"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        android:layout_marginTop="16dp" />
++
++    <!-- 한도 설정 입력 필드 -->
++    <EditText
++        android:id="@+id/limitInput"
++        android:layout_width="0dp"
++        android:layout_height="wrap_content"
++        android:hint="월 지출 한도를 입력하세요"
++        android:inputType="number"
++        android:padding="12dp"
++        app:layout_constraintTop_toBottomOf="@id/currentSpendingText"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toStartOf="@id/saveLimitButton"
++        android:layout_marginStart="16dp"
++        android:layout_marginEnd="8dp"
++        android:layout_marginTop="16dp"/>
++
++    <!-- 한도 설정 저장 버튼 -->
++    <Button
++        android:id="@+id/saveLimitButton"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="저장"
++        app:layout_constraintTop_toTopOf="@id/limitInput"
++        app:layout_constraintStart_toEndOf="@id/limitInput"
++        app:layout_constraintEnd_toEndOf="parent"
++        android:layout_marginEnd="16dp" />
++
++    <!-- 지출 항목 리스트 -->
++    <androidx.recyclerview.widget.RecyclerView
++        android:id="@+id/spendingRecyclerView"
++        android:layout_width="0dp"
++        android:layout_height="0dp"
++        app:layout_constraintTop_toBottomOf="@id/limitInput"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintBottom_toBottomOf="parent"
++        android:layout_marginTop="16dp"
++        tools:listitem="@layout/item_spending" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: layout/item_spending.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/layout/item_spending.xml b/layout/item_spending.xml
+new file mode 100644
+--- /dev/null	(date 1737600343479)
++++ b/layout/item_spending.xml	(date 1737600343479)
+@@ -0,0 +1,21 @@
++<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="wrap_content"
++    android:orientation="horizontal"
++    android:padding="8dp">
++
++    <TextView
++        android:id="@+id/categoryText"
++        android:layout_width="0dp"
++        android:layout_height="wrap_content"
++        android:layout_weight="1"
++        android:text="카테고리"
++        android:textSize="16sp"/>
++
++    <TextView
++        android:id="@+id/amountText"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="금액"
++        android:textSize="16sp" />
++</LinearLayout>
+\ No newline at end of file
+Index: chart/ChartFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/chart/ChartFragment.kt b/chart/ChartFragment.kt
+new file mode 100644
+--- /dev/null	(date 1737600343474)
++++ b/chart/ChartFragment.kt	(date 1737600343474)
+@@ -0,0 +1,127 @@
++package com.example.guru2
++
++import android.graphics.Color
++import android.os.Bundle
++import android.util.Log
++import android.view.LayoutInflater
++import android.view.View
++import android.view.ViewGroup
++import android.widget.*
++import androidx.fragment.app.Fragment
++import androidx.recyclerview.widget.LinearLayoutManager
++import androidx.recyclerview.widget.RecyclerView
++import com.github.mikephil.charting.charts.PieChart
++import com.github.mikephil.charting.data.PieData
++import com.github.mikephil.charting.data.PieDataSet
++import com.github.mikephil.charting.data.PieEntry
++import com.github.mikephil.charting.utils.ColorTemplate
++
++class ChartFragment : Fragment() {
++
++    private lateinit var pieChart: PieChart
++    private lateinit var currentSpendingText: TextView
++    private lateinit var limitInput: EditText
++    private lateinit var saveLimitButton: Button
++    private lateinit var spendingRecyclerView: RecyclerView
++
++    private lateinit var dbManager: DBManager
++    private var spendingLimit = 0
++    private var currentSpending = 0
++    private val spendingList = mutableListOf<Pair<String, Double>>()
++
++    override fun onCreateView(
++        inflater: LayoutInflater, container: ViewGroup?,
++        savedInstanceState: Bundle?
++    ): View? {
++        // 기존 XML 레이아웃 사용
++        return inflater.inflate(R.layout.charactivity_main, container, false)
++    }
++
++    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
++        super.onViewCreated(view, savedInstanceState)
++
++        // 뷰 초기화
++        pieChart = view.findViewById(R.id.pieChart)
++        currentSpendingText = view.findViewById(R.id.currentSpendingText)
++        limitInput = view.findViewById(R.id.limitInput)
++        saveLimitButton = view.findViewById(R.id.saveLimitButton)
++        spendingRecyclerView = view.findViewById(R.id.spendingRecyclerView)
++
++        // DBManager 초기화
++        dbManager = DBManager(requireContext())
++
++        // SharedPreferences설정
++        val sharedPreferences = requireContext().getSharedPreferences("SpendingPrefs", AppCompatActivity.MODE_PRIVATE)
++        spendingLimit = sharedPreferences.getInt("spendingLimit", 0)
++        updateSpendingText()
++
++        // 한도 저장 버튼 클릭 리스너
++        saveLimitButton.setOnClickListener {
++            val limitText = limitInput.text.toString()
++            if (limitText.isNotEmpty() && limitText.toIntOrNull() != null && limitText.toInt() >= 0) {
++                spendingLimit = limitText.toInt()
++                sharedPreferences.edit().putInt("spendingLimit", spendingLimit).apply()
++                Toast.makeText(requireContext(), "한도가 저장되었습니다: ${spendingLimit}원", Toast.LENGTH_SHORT).show()
++
++                if (currentSpending > spendingLimit) {
++                    val excess = currentSpending - spendingLimit
++                    Toast.makeText(requireContext(), "경고: 현재 지출이 한도를 초과했습니다! 초과 금액: ${excess}원", Toast.LENGTH_LONG).show()
++                    currentSpendingText.setTextColor(Color.RED)
++                } else {
++                    currentSpendingText.setTextColor(Color.BLACK)
++                }
++                updateSpendingText()
++            } else {
++                Toast.makeText(requireContext(), "한도를 입력해주세요.", Toast.LENGTH_SHORT).show()
++            }
++        }
++
++        // RecyclerView 설정
++        setupRecyclerView()
++
++        // 데이터베이스에서 데이터 불러옴
++        loadSpendingDataFromDatabase()
++    }
++
++    private fun setupRecyclerView() {
++        spendingRecyclerView.layoutManager = LinearLayoutManager(requireContext())
++        spendingRecyclerView.adapter = SpendingAdapter(spendingList)
++    }
++
++    private fun loadSpendingDataFromDatabase() {
++        val expenses = dbManager.getAllExpenses()
++        currentSpending = 0
++        spendingList.clear()
++
++        for (expense in expenses) {
++            if (expense.transactionType == "expense") {
++                spendingList.add(Pair(expense.detail, expense.amount))
++                currentSpending += expense.amount.toInt()
++            }
++        }
++
++        spendingRecyclerView.adapter?.notifyDataSetChanged()
++        updateSpendingText()
++        updatePieChart()
++
++        Log.d("ChartFragment", "Current Spending: $currentSpending")
++        Log.d("ChartFragment", "Spending List: $spendingList")
++    }
++
++    private fun updateSpendingText() {
++        currentSpendingText.text = "현재 지출: ${currentSpending}원 / 한도: ${spendingLimit}원"
++    }
++
++    private fun updatePieChart() {
++        val entries = spendingList.map { PieEntry(it.second.toFloat(), it.first) }
++        val dataSet = PieDataSet(entries, "지출 비중")
++        dataSet.colors = ColorTemplate.MATERIAL_COLORS.toList()
++        dataSet.valueTextSize = 14f
++
++        val data = PieData(dataSet)
++        pieChart.data = data
++        pieChart.centerText = "월별 지출"
++        pieChart.animateY(1000)
++        pieChart.invalidate()
++    }
++}
