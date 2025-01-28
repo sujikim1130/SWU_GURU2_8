@@ -19,6 +19,13 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+mpandroidchart = "com.github.PhilJay:MPAndroidChart:3.1.0"
+>>>>>>> 29cfd2a4639170523299994044e5e6bafa70b24e
+>>>>>>> main
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
