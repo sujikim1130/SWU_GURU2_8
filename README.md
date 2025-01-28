@@ -1,4 +1,27 @@
 <<<<<<< HEAD
+# SWU_GURU2_8
+
+
+## sub2  
+### 파일 구조  
+```
+📁 com.example.financialledgerapp  
+├── 📂 database  
+│   ├── 📝 DBManager.kt  
+│   └── 📝 Expense.kt  
+├── 📂 ui  
+│   ├── 📝 MainActivity.kt  
+│   └── 📝 ExpenseAdapter.kt  
+└── 📂 res  
+    ├── 📁 layout  
+    │   ├── 📝 activity_main.xml  
+    │   └── 📝 item_expense.xml  
+```
+
+
+ 
+=======
+<<<<<<< HEAD
 
 =======
 ![image](https://github.com/user-attachments/assets/128fb57e-be5d-444e-865d-e1b9f75d1fc8)
@@ -13,3 +36,4 @@
 
 실행파일은 res_layout_activity_login.xml을 실행하시면 됩니다
 >>>>>>> 29cfd2a4639170523299994044e5e6bafa70b24e
+>>>>>>> main

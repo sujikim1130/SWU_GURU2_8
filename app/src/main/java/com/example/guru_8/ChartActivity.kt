@@ -8,11 +8,13 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.data.PieData
-import com.github.mikephil.charting.data.PieDataSet
-import com.github.mikephil.charting.data.PieEntry
-import com.github.mikephil.charting.utils.ColorTemplate
+import com.example.financialledgerapp.DataBase
+
+//import com.example.guru_8.
+//import com.guru_8.mikephil.charting.data.PieData
+//import com.guru_8.mikephil.charting.data.PieDataSet
+//import com.guru_8.mikephil.charting.data.PieEntry
+//import com.guru_8.mikephil.charting.utils.ColorTemplate
 
 class ChartActivity : AppCompatActivity() {
 
@@ -23,7 +25,7 @@ class ChartActivity : AppCompatActivity() {
     private lateinit var spendingRecyclerView: RecyclerView
 
 
-    private lateinit var dbManager: DBManager
+    private lateinit var dbManager: DataBase
     private var spendingLimit = 0
     private var currentSpending = 0
     private val spendingList = mutableListOf<Pair<String, Double>>()
@@ -40,7 +42,7 @@ class ChartActivity : AppCompatActivity() {
         spendingRecyclerView = findViewById(R.id.spendingRecyclerView)
 
         // DBManager 초기화
-        dbManager = DBManager(this)
+        dbManager = DataBase(this)
 
         // SharedPreferences 설정
         val sharedPreferences = getSharedPreferences("SpendingPrefs", MODE_PRIVATE)

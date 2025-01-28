@@ -1,0 +1,445 @@
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    package=\"com.example.guru_8\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n        android:fullBackupContent=\"@xml/backup_rules\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.GURU_8\"\r\n        tools:targetApi=\"35\">\r\n        <activity\r\n            android:name=\".FragmentActivity\"\r\n            android:exported=\"true\"\r\n            tools:ignore=\"MissingClass\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n                <categorxy android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n        <!--        회원가입을 위한 페이지 이동을 위해 추가-->\r\n        <activity android:name=\".SignupActivity\" />\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision ce9760fafee0e3dcd7efa565844156b087482fb0)
++++ b/app/src/main/AndroidManifest.xml	(date 1737621936160)
+@@ -14,15 +14,28 @@
+         android:theme="@style/Theme.GURU_8"
+         tools:targetApi="35">
+         <activity
++<<<<<<< HEAD
++=======
++            android:name=".ChartActivity"
++            android:exported="false" />
++        <activity
++>>>>>>> 29cfd2a4639170523299994044e5e6bafa70b24e
+             android:name=".FragmentActivity"
+             android:exported="true"
+             tools:ignore="MissingClass">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
++<<<<<<< HEAD
+                 <categorxy android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+         </activity>
+         <!--        회원가입을 위한 페이지 이동을 위해 추가-->
++=======
++
++                <categorxy android:name="android.intent.category.LAUNCHER" />
++            </intent-filter>
++        </activity> <!-- 회원가입을 위한 페이지 이동을 위해 추가 -->
++>>>>>>> 29cfd2a4639170523299994044e5e6bafa70b24e
+         <activity android:name=".SignupActivity" />
+     </application>
+ 
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_21\" default=\"true\" project-jdk-name=\"jbr-21\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision ce9760fafee0e3dcd7efa565844156b087482fb0)
++++ b/.idea/misc.xml	(date 1737621984799)
+@@ -1,10 +1,16 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ExternalStorageConfigurationManager" enabled="true" />
++<<<<<<< HEAD
+   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="jbr-21" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+     <option name="id" value="Android" />
+   </component>
++=======
++  <component name="ProjectRootManager" version="2" default="true">
++    <output url="file://$PROJECT_DIR$/build/classes" />
++  </component>
++>>>>>>> 29cfd2a4639170523299994044e5e6bafa70b24e
+ </project>
+\ No newline at end of file
+Index: gradle/libs.versions.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[versions]\r\nagp = \"8.7.3\"\r\nkotlin = \"1.9.24\"\r\ncoreKtx = \"1.15.0\"\r\njunit = \"4.13.2\"\r\njunitVersion = \"1.2.1\"\r\nespressoCore = \"3.6.1\"\r\nappcompat = \"1.7.0\"\r\nmaterial = \"1.12.0\"\r\nactivity = \"1.10.0\"\r\nconstraintlayout = \"2.2.0\"\r\n\r\n[libraries]\r\nandroidx-core-ktx = { group = \"androidx.core\", name = \"core-ktx\", version.ref = \"coreKtx\" }\r\njunit = { group = \"junit\", name = \"junit\", version.ref = \"junit\" }\r\nandroidx-junit = { group = \"androidx.test.ext\", name = \"junit\", version.ref = \"junitVersion\" }\r\nandroidx-espresso-core = { group = \"androidx.test.espresso\", name = \"espresso-core\", version.ref = \"espressoCore\" }\r\nandroidx-appcompat = { group = \"androidx.appcompat\", name = \"appcompat\", version.ref = \"appcompat\" }\r\nmaterial = { group = \"com.google.android.material\", name = \"material\", version.ref = \"material\" }\r\nandroidx-activity = { group = \"androidx.activity\", name = \"activity\", version.ref = \"activity\" }\r\nandroidx-constraintlayout = { group = \"androidx.constraintlayout\", name = \"constraintlayout\", version.ref = \"constraintlayout\" }\r\n\r\n[plugins]\r\nandroid-application = { id = \"com.android.application\", version.ref = \"agp\" }\r\nkotlin-android = { id = \"org.jetbrains.kotlin.android\", version.ref = \"kotlin\" }\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gradle/libs.versions.toml b/gradle/libs.versions.toml
+--- a/gradle/libs.versions.toml	(revision ce9760fafee0e3dcd7efa565844156b087482fb0)
++++ b/gradle/libs.versions.toml	(date 1737621983593)
+@@ -19,6 +19,10 @@
+ material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+ androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
++<<<<<<< HEAD
++=======
++mpandroidchart = "com.github.PhilJay:MPAndroidChart:3.1.0"
++>>>>>>> 29cfd2a4639170523299994044e5e6bafa70b24e
+ 
+ [plugins]
+ android-application = { id = "com.android.application", version.ref = "agp" }
+Index: app/src/main/res/layout/activity_chart.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_chart.xml b/app/src/main/res/layout/activity_chart.xml
+new file mode 100644
+--- /dev/null	(date 1737621906551)
++++ b/app/src/main/res/layout/activity_chart.xml	(date 1737621906551)
+@@ -0,0 +1,72 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".ChartActivity">
++
++    <!-- 월별 통계를 표시할 원형 차트 -->
++    <com.github.mikephil.charting.charts.PieChart
++        android:id="@+id/pieChart"
++        android:layout_width="0dp"
++        android:layout_height="300dp"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        android:layout_marginTop="16dp" />
++
++    <!-- 현재 지출 상황 표시 -->
++    <TextView
++        android:id="@+id/currentSpendingText"
++        android:layout_width="0dp"
++        android:layout_height="wrap_content"
++        android:text="현재 지출: 0원 / 한도: 0원"
++        android:textSize="16sp"
++        android:textColor="@color/black"
++        android:gravity="center"
++        app:layout_constraintTop_toBottomOf="@id/pieChart"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        android:layout_marginTop="16dp" />
++
++    <!-- 한도 설정 입력 필드 -->
++    <EditText
++        android:id="@+id/limitInput"
++        android:layout_width="0dp"
++        android:layout_height="wrap_content"
++        android:hint="월 지출 한도를 입력하세요"
++        android:inputType="number"
++        android:padding="12dp"
++        app:layout_constraintTop_toBottomOf="@id/currentSpendingText"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toStartOf="@id/saveLimitButton"
++        android:layout_marginStart="16dp"
++        android:layout_marginEnd="8dp"
++        android:layout_marginTop="16dp" />
++
++    <!-- 한도 설정 저장 버튼 -->
++    <Button
++        android:id="@+id/saveLimitButton"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="저장"
++        app:layout_constraintTop_toTopOf="@id/limitInput"
++        app:layout_constraintStart_toEndOf="@id/limitInput"
++        app:layout_constraintEnd_toEndOf="parent"
++        android:layout_marginEnd="16dp" />
++
++    <!-- 지출 항목 리스트 -->
++    <androidx.recyclerview.widget.RecyclerView
++        android:id="@+id/spendingRecyclerView"
++        android:layout_width="0dp"
++        android:layout_height="0dp"
++        app:layout_constraintTop_toBottomOf="@id/limitInput"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintBottom_toBottomOf="parent"
++        android:layout_marginTop="16dp"
++        tools:listitem="@layout/item_spending" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/guru_8/SpendingAdapter.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/guru_8/SpendingAdapter.kt b/app/src/main/java/com/example/guru_8/SpendingAdapter.kt
+new file mode 100644
+--- /dev/null	(date 1737621906549)
++++ b/app/src/main/java/com/example/guru_8/SpendingAdapter.kt	(date 1737621906549)
+@@ -0,0 +1,29 @@
++package com.example.guru_8
++
++import android.view.LayoutInflater
++import android.view.View
++import android.view.ViewGroup
++import android.widget.TextView
++import androidx.recyclerview.widget.RecyclerView
++
++class SpendingAdapter(private val spendingList: MutableList<Pair<String, Double>>) :
++    RecyclerView.Adapter<SpendingAdapter.SpendingViewHolder>() {
++
++    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpendingViewHolder {
++        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_spending, parent, false)
++        return SpendingViewHolder(view)
++    }
++
++    override fun onBindViewHolder(holder: SpendingViewHolder, position: Int) { //카테고리와 금액 데이터를 표시
++        val (category, amount) = spendingList[position]
++        holder.categoryText.text = category
++        holder.amountText.text = "${amount}원"
++    }
++
++    override fun getItemCount(): Int = spendingList.size
++
++    class SpendingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) { //각 아이템을 저장하고 관리하는 클래스
++        val categoryText: TextView = itemView.findViewById(R.id.categoryText)
++        val amountText: TextView = itemView.findViewById(R.id.amountText)
++    }
++}
+\ No newline at end of file
+Index: settings.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>pluginManagement {\r\n    repositories {\r\n        google {\r\n            content {\r\n                includeGroupByRegex(\"com\\\\.android.*\")\r\n                includeGroupByRegex(\"com\\\\.google.*\")\r\n                includeGroupByRegex(\"androidx.*\")\r\n            }\r\n        }\r\n        mavenCentral()\r\n        gradlePluginPortal()\r\n    }\r\n}\r\ndependencyResolutionManagement {\r\n    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)\r\n    repositories {\r\n        google()\r\n        mavenCentral()\r\n    }\r\n}\r\n\r\nrootProject.name = \"GURU_8\"\r\ninclude(\":app\")\r\n 
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/settings.gradle.kts b/settings.gradle.kts
+--- a/settings.gradle.kts	(revision ce9760fafee0e3dcd7efa565844156b087482fb0)
++++ b/settings.gradle.kts	(date 1737621987082)
+@@ -16,6 +16,10 @@
+     repositories {
+         google()
+         mavenCentral()
++<<<<<<< HEAD
++=======
++        maven { url = uri("https://jitpack.io") }
++>>>>>>> 29cfd2a4639170523299994044e5e6bafa70b24e
+     }
+ }
+ 
+Index: README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/README.md b/README.md
+--- a/README.md	(revision ce9760fafee0e3dcd7efa565844156b087482fb0)
++++ b/README.md	(date 1737621985618)
+@@ -1,1 +1,11 @@
++![image](https://github.com/user-attachments/assets/128fb57e-be5d-444e-865d-e1b9f75d1fc8)
++
+ 
++완성된 메인화면_로그인 버전입니다
++디자인은 나중에 sub 1,2,3과 통일할 때를 대비하여 건들지 않았으며 후에 더욱 추가할 예정입니다
++
++비밀번호를 입력할 시, 현재 입력된 비밀번호가 표시되며, 초기 비밀번호는 임의로 1234 로 설정되어 있는 상태입니다
++틀린 비밀번호를 입력할 시 "비밀번호가 틀렸습니다." 라는 문구가 뜨며, 
++옳은 비밀번호를 입력할 시 "로그인이 완료되었습니다."라는 문구가 뜨도록 설걔하였습니다 
++
++실행파일은 res_layout_activity_login.xml을 실행하시면 됩니다
+Index: app/src/main/java/com/example/guru_8/ChartActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/guru_8/ChartActivity.kt b/app/src/main/java/com/example/guru_8/ChartActivity.kt
+new file mode 100644
+--- /dev/null	(date 1737621906548)
++++ b/app/src/main/java/com/example/guru_8/ChartActivity.kt	(date 1737621906548)
+@@ -0,0 +1,125 @@
++package com.example.guru_8
++
++import android.graphics.Color
++import android.os.Build.VERSION_CODES.R
++import android.os.Bundle
++import android.util.Log
++import android.widget.*
++import androidx.appcompat.app.AppCompatActivity
++import androidx.recyclerview.widget.LinearLayoutManager
++import androidx.recyclerview.widget.RecyclerView
++import com.github.mikephil.charting.charts.PieChart
++import com.github.mikephil.charting.data.PieData
++import com.github.mikephil.charting.data.PieDataSet
++import com.github.mikephil.charting.data.PieEntry
++import com.github.mikephil.charting.utils.ColorTemplate
++
++class ChartActivity : AppCompatActivity() {
++
++    private lateinit var pieChart: PieChart
++    private lateinit var currentSpendingText: TextView
++    private lateinit var limitInput: EditText
++    private lateinit var saveLimitButton: Button
++    private lateinit var spendingRecyclerView: RecyclerView
++
++
++    private lateinit var dbManager: DBManager
++    private var spendingLimit = 0
++    private var currentSpending = 0
++    private val spendingList = mutableListOf<Pair<String, Double>>()
++
++    override fun onCreate(savedInstanceState: Bundle?) {
++        super.onCreate(savedInstanceState)
++        setContentView(R.layout.activity_chart)
++
++        // 뷰 초기화
++        pieChart = findViewById(R.id.pieChart)
++        currentSpendingText = findViewById(R.id.currentSpendingText)
++        limitInput = findViewById(R.id.limitInput)
++        saveLimitButton = findViewById(R.id.saveLimitButton)
++        spendingRecyclerView = findViewById(R.id.spendingRecyclerView)
++
++        // DBManager 초기화
++        dbManager = DBManager(this)
++
++        // SharedPreferences 설정
++        val sharedPreferences = getSharedPreferences("SpendingPrefs", MODE_PRIVATE)
++        spendingLimit = sharedPreferences.getInt("spendingLimit", 0)
++        updateSpendingText()
++
++        // 한도 저장 버튼 클릭 리스너
++        saveLimitButton.setOnClickListener {
++            val limitText = limitInput.text.toString()
++            if (limitText.isNotEmpty() && limitText.toIntOrNull() != null && limitText.toInt() >= 0) {
++                spendingLimit = limitText.toInt()
++                sharedPreferences.edit().putInt("spendingLimit", spendingLimit).apply()
++                Toast.makeText(this, "한도가 저장되었습니다: ${spendingLimit}원", Toast.LENGTH_SHORT).show()
++
++                // 한도 변경 후 현재 지출이 초과되었는지 확인
++                if (currentSpending > spendingLimit) {
++                    val excess = currentSpending - spendingLimit
++                    Toast.makeText(this, "경고: 현재 지출이 한도를 초과했습니다! 초과 금액: ${excess}원", Toast.LENGTH_LONG).show()
++                    currentSpendingText.setTextColor(Color.RED)
++                } else {
++                    currentSpendingText.setTextColor(Color.BLACK)
++                }
++
++                updateSpendingText()
++            } else {
++                Toast.makeText(this, "한도를 입력해주세요.", Toast.LENGTH_SHORT).show()
++            }
++        }
++
++        // RecyclerView 설정
++        setupRecyclerView()
++
++        // 데이터베이스에서 데이터 불러오기
++        loadSpendingDataFromDatabase()
++    }
++
++    // RecyclerView 초기화
++    private fun setupRecyclerView() {
++        spendingRecyclerView.layoutManager = LinearLayoutManager(this)
++        spendingRecyclerView.adapter = SpendingAdapter(spendingList)
++    }
++
++    // 데이터베이스에서 지출 데이터를 불러오는 함수
++    private fun loadSpendingDataFromDatabase() {
++        val expenses = dbManager.getAllExpenses()
++        currentSpending = 0
++        spendingList.clear()
++
++        for (expense in expenses) {
++            if (expense.transactionType == "expense") {  // 모든 지출 항목을 처리
++                spendingList.add(Pair(expense.detail, expense.amount))
++                currentSpending += expense.amount.toInt()
++            }
++        }
++
++        spendingRecyclerView.adapter?.notifyDataSetChanged()
++        updateSpendingText()
++        updatePieChart()
++
++        Log.d("ChartActivity", "Current Spending: $currentSpending")
++        Log.d("ChartActivity", "Spending List: $spendingList")
++    }
++
++    // 현재 지출 텍스트 업데이트
++    private fun updateSpendingText() {
++        currentSpendingText.text = "현재 지출: ${currentSpending}원 / 한도: ${spendingLimit}원"
++    }
++
++    // 원형 차트 업데이트
++    private fun updatePieChart() {
++        val entries = spendingList.map { PieEntry(it.second.toFloat(), it.first) }
++        val dataSet = PieDataSet(entries, "지출 비중")
++        dataSet.colors = ColorTemplate.MATERIAL_COLORS.toList()
++        dataSet.valueTextSize = 14f
++
++        val data = PieData(dataSet)
++        pieChart.data = data
++        pieChart.centerText = "월별 지출"
++        pieChart.animateY(1000)
++        pieChart.invalidate()
++    }
++}
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"CHOOSE_PER_TEST\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"gradleJvm\" value=\"#GRADLE_LOCAL_JAVA_HOME\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveExternalAnnotations\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+--- a/.idea/gradle.xml	(revision ce9760fafee0e3dcd7efa565844156b087482fb0)
++++ b/.idea/gradle.xml	(date 1737621992325)
+@@ -6,13 +6,6 @@
+       <GradleProjectSettings>
+         <option name="testRunner" value="CHOOSE_PER_TEST" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+-        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
+-        <option name="modules">
+-          <set>
+-            <option value="$PROJECT_DIR$" />
+-            <option value="$PROJECT_DIR$/app" />
+-          </set>
+-        </option>
+         <option name="resolveExternalAnnotations" value="false" />
+       </GradleProjectSettings>
+     </option>
+Index: app/src/main/res/layout/item_spending.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/item_spending.xml b/app/src/main/res/layout/item_spending.xml
+new file mode 100644
+--- /dev/null	(date 1737621906552)
++++ b/app/src/main/res/layout/item_spending.xml	(date 1737621906552)
+@@ -0,0 +1,21 @@
++<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="wrap_content"
++    android:orientation="horizontal"
++    android:padding="8dp">
++
++    <TextView
++        android:id="@+id/categoryText"
++        android:layout_width="0dp"
++        android:layout_height="wrap_content"
++        android:layout_weight="1"
++        android:text="카테고리"
++        android:textSize="16sp" />
++
++    <TextView
++        android:id="@+id/amountText"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="금액"
++        android:textSize="16sp" />
++</LinearLayout>
+\ No newline at end of file

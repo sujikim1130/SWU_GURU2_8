@@ -17,6 +17,13 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
 <<<<<<< HEAD
+    }
+}
+
+rootProject.name = "FinancialLedgerApp"
+include(":app")
+=======
+<<<<<<< HEAD
 =======
         maven { url = uri("https://jitpack.io") }
 >>>>>>> 29cfd2a4639170523299994044e5e6bafa70b24e
@@ -26,3 +33,4 @@ dependencyResolutionManagement {
 rootProject.name = "GURU_8"
 include(":app")
  
+>>>>>>> main

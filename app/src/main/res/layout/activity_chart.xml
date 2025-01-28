@@ -8,7 +8,7 @@
     tools:context=".ChartActivity">
 
     <!-- 월별 통계를 표시할 원형 차트 -->
-    <com.github.mikephil.charting.charts.PieChart
+    <com.guru_8.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart"
         android:layout_width="0dp"
         android:layout_height="300dp"
