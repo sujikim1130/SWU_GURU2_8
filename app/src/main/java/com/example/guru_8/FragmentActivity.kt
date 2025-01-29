@@ -2,8 +2,8 @@ package com.example.guru_8
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.guru_8.fragment.HomeFragment
-import com.example.guru_8.fragment.SettingsFragment
+import com.example.guru_8.fragment.ExpenseFragment
+import com.example.guru_8.fragment.MainCalenderFragment
 import com.example.guru_8.fragment.StatsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -18,15 +18,15 @@ class FragmentActivity : AppCompatActivity() {
 
         // 첫 화면으로 홈 프래그먼트 설정
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, HomeFragment())
+            .replace(R.id.fragment_container, MainCalenderFragment())
             .commit()
 
         // 탭 선택 이벤트 처리
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             val selectedFragment = when (menuItem.itemId) {
-                R.id.nav_home -> HomeFragment()
-                R.id.nav_stats -> StatsFragment()
-                R.id.nav_settings -> SettingsFragment()
+                R.id.nav_home -> MainCalenderFragment()
+                R.id.nav_stats -> ExpenseFragment()
+                R.id.nav_settings -> StatsFragment()
                 else -> null
             }
             selectedFragment?.let {

@@ -7,19 +7,19 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.financialledgerapp.DataBase
+import com.example.guru_8.data.DataBaseHelper
 import com.example.guru_8.databinding.ActivitySignupBinding
 
 class SignupActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
-    private lateinit var dbHelper: DataBase
+    private lateinit var dbHelper: DataBaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        dbHelper = DataBase(this)
+        dbHelper = DataBaseHelper(this)
 
         binding.btnSignup.setOnClickListener {
             val name = binding.etName.text.toString()
@@ -69,14 +69,14 @@ class SignupActivity : AppCompatActivity() {
     private fun saveUserToDatabase(name: String, nickname: String, phone: String, email: String, password: String): Boolean {
         val db: SQLiteDatabase = dbHelper.writableDatabase
         val values = ContentValues().apply {
-            put(DataBase.COLUMN_USERNAME, name)
-            put(DataBase.COLUMN_NICKNAME, nickname)
-            put(DataBase.COLUMN_PHONE, phone)
-            put(DataBase.COLUMN_EMAIL, email)
-            put(DataBase.COLUMN_PASSWORD, password)
+            put(DataBaseHelper.COLUMN_USERNAME, name)
+            put(DataBaseHelper.COLUMN_NICKNAME, nickname)
+            put(DataBaseHelper.COLUMN_PHONE, phone)
+            put(DataBaseHelper.COLUMN_EMAIL, email)
+            put(DataBaseHelper.COLUMN_PASSWORD, password)
         }
 
-        val newRowId = db.insert(DataBase.TABLE_USERS, null, values)
+        val newRowId = db.insert(DataBaseHelper.TABLE_USERS, null, values)
         return newRowId != -1L
     }
 }

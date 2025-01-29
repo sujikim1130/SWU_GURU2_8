@@ -1,11 +1,11 @@
-package com.example.financialledgerapp
+package com.example.guru_8.data
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class DataBase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
         const val DATABASE_NAME = "financialApp.db"
@@ -21,7 +21,7 @@ class DataBase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
 
         const val TABLE_NAME = "expenses"
         const val COLUMN_ID = "id"
-        const val COLUMN_DETAIL = "datail"
+        const val COLUMN_DETAIL = "detail"
         const val COLUMN_CATEGORY = "category"
         const val COLUMN_AMOUNT = "amount"
         const val COLUMN_TRANSACTION_TYPE = "transaction_type"
@@ -57,6 +57,9 @@ class DataBase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         if (oldVersion < 3) {
             db.execSQL("ALTER TABLE $TABLE_NAME ADD COLUMN $COLUMN_CATEGORY TEXT DEFAULT '기타'")
         }
+        if (oldVersion < 4) {  // 버전 4 추가 (detail 컬럼이 없는 경우 대비)
+            db.execSQL("ALTER TABLE $TABLE_NAME ADD COLUMN $COLUMN_DETAIL TEXT DEFAULT ''")
+        }
     }
 
     fun addExpense(amount: Double, detail: String, transactionType: String, category: String): Long {
@@ -90,10 +93,12 @@ class DataBase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         if (cursor.moveToFirst()) {
             do {
                 val id = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID))  // getLong() 사용
-                val amount = cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_AMOUNT))
+                val amount = cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_AMOUNT)).toDouble()
                 val detail = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DETAIL))
                 val category = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CATEGORY))
-                val transactionType = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TRANSACTION_TYPE))
+                val transactionType = cursor.getString(cursor.getColumnIndexOrThrow(
+                    COLUMN_TRANSACTION_TYPE
+                ))
 
                 expenses.add(Expense(id, amount, detail, transactionType, category))
             } while (cursor.moveToNext())

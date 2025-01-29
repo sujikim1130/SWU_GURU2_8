@@ -9,10 +9,10 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.guru_8.DBManager
-import com.example.guru_8.Expense
+import com.example.guru_8.data.DataBaseHelper
+import com.example.guru_8.data.Expense
 import com.example.guru_8.R
-import com.example.guru_8.SpendingAdapter
+import com.example.guru_8.adapters.SpendingAdapter
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -27,7 +27,7 @@ class StatsFragment : Fragment() {
     private lateinit var saveLimitButton: Button
     private lateinit var spendingRecyclerView: RecyclerView
 
-    private lateinit var dbManager: DBManager
+    private lateinit var dbManager: DataBaseHelper
     private var spendingLimit = 0
     private var currentSpending = 0
     private val spendingList = mutableListOf<Expense>()
@@ -48,7 +48,7 @@ class StatsFragment : Fragment() {
         saveLimitButton = view.findViewById(R.id.saveLimitButton)
         spendingRecyclerView = view.findViewById(R.id.spendingRecyclerView)
 
-        dbManager = DBManager(requireContext())
+        dbManager = DataBaseHelper(requireContext())
 
         val sharedPreferences = requireActivity().getSharedPreferences("SpendingPrefs", 0)
         spendingLimit = sharedPreferences.getInt("spendingLimit", 0)
@@ -101,7 +101,7 @@ class StatsFragment : Fragment() {
     }
 
     private fun loadSpendingDataFromDatabase() {
-        val expenses = dbManager.getAllExpenses() // DB 지출 받아오기
+        val expenses = dbManager.getAllExpensesForUser() // DB 지출 받아오기
         currentSpending = 0
         spendingList.clear()
 

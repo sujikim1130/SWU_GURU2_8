@@ -1,4 +1,4 @@
-package com.example.financialledgerapp
+package com.example.guru_8.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,9 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.guru_8.data.DataBaseHelper
+import com.example.guru_8.adapters.ExpenseAdapter
+import com.example.guru_8.R
 
 class ExpenseFragment : Fragment() {
 
@@ -17,7 +20,7 @@ class ExpenseFragment : Fragment() {
     private lateinit var categoryGroup: GridLayout
     private lateinit var buttonAdd: Button
     private lateinit var recyclerViewExpenses: RecyclerView
-    private lateinit var dbManager: DataBase
+    private lateinit var dbManager: DataBaseHelper
     private lateinit var expenseAdapter: ExpenseAdapter
 
     override fun onCreateView(
@@ -38,7 +41,7 @@ class ExpenseFragment : Fragment() {
         setupCategorySelection()
 
         // DBManager 초기화
-        dbManager = DataBase(requireContext())
+        dbManager = DataBaseHelper(requireContext())
 
         // RecyclerView와 Adapter 설정
         recyclerViewExpenses.layoutManager = LinearLayoutManager(requireContext())

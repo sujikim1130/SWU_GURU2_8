@@ -1,11 +1,12 @@
-package com.example.guru_8
+package com.example.guru_8.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.financialledgerapp.R
+import com.example.guru_8.data.Expense
+import com.example.guru_8.R
 
 class SpendingAdapter(private val spendingList: List<Expense>) : //지출항목을 리스트 형태로 표시
     RecyclerView.Adapter<SpendingAdapter.SpendingViewHolder>() {

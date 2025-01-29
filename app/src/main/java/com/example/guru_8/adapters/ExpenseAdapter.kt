@@ -1,4 +1,4 @@
-package com.example.financialledgerapp
+package com.example.guru_8.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import android.graphics.PorterDuff
+import com.example.guru_8.data.Expense
+import com.example.guru_8.R
 
 class ExpenseAdapter(private var expenses: List<Expense>) : RecyclerView.Adapter<ExpenseAdapter.ExpenseViewHolder>() {
 
@@ -59,15 +61,23 @@ class ExpenseAdapter(private var expenses: List<Expense>) : RecyclerView.Adapter
 
         // 색상 변경 (thumbsUp, thumbsDown 선택 상태에 따라)
         if (expense.isSelectedThumbsUp) {
-            holder.thumbsUp.setColorFilter(ContextCompat.getColor(holder.itemView.context, R.color.blue), PorterDuff.Mode.SRC_IN)
+            holder.thumbsUp.setColorFilter(ContextCompat.getColor(holder.itemView.context,
+                R.color.blue
+            ), PorterDuff.Mode.SRC_IN)
         } else {
-            holder.thumbsUp.setColorFilter(ContextCompat.getColor(holder.itemView.context, R.color.gray), PorterDuff.Mode.SRC_IN)
+            holder.thumbsUp.setColorFilter(ContextCompat.getColor(holder.itemView.context,
+                R.color.gray
+            ), PorterDuff.Mode.SRC_IN)
         }
 
         if (expense.isSelectedThumbsDown) {
-            holder.thumbsDown.setColorFilter(ContextCompat.getColor(holder.itemView.context, R.color.red), PorterDuff.Mode.SRC_IN)
+            holder.thumbsDown.setColorFilter(ContextCompat.getColor(holder.itemView.context,
+                R.color.red
+            ), PorterDuff.Mode.SRC_IN)
         } else {
-            holder.thumbsDown.setColorFilter(ContextCompat.getColor(holder.itemView.context, R.color.gray), PorterDuff.Mode.SRC_IN)
+            holder.thumbsDown.setColorFilter(ContextCompat.getColor(holder.itemView.context,
+                R.color.gray
+            ), PorterDuff.Mode.SRC_IN)
         }
     }
 

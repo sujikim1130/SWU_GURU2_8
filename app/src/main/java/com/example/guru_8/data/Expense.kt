@@ -1,4 +1,4 @@
-package com.example.financialledgerapp
+package com.example.guru_8.data
 
 data class Expense(
     val id: Long,
