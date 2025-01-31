@@ -9,7 +9,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     companion object {
         const val DATABASE_NAME = "financialApp.db"
-        const val DATABASE_VERSION = 3
+        const val DATABASE_VERSION = 4  // ✅ 버전 업데이트 (date 추가)
 
         const val TABLE_USERS = "users"
         const val COLUMN_USER_ID = "id"
@@ -25,6 +25,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         const val COLUMN_CATEGORY = "category"
         const val COLUMN_AMOUNT = "amount"
         const val COLUMN_TRANSACTION_TYPE = "transaction_type"
+        const val COLUMN_DATE = "date"  // ✅ 날짜 컬럼 추가
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -45,8 +46,9 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 $COLUMN_DETAIL TEXT NOT NULL,
                 $COLUMN_CATEGORY TEXT NOT NULL,
                 $COLUMN_AMOUNT REAL NOT NULL,
-                $COLUMN_TRANSACTION_TYPE TEXT
-                )
+                $COLUMN_TRANSACTION_TYPE TEXT,
+                $COLUMN_DATE TEXT NOT NULL  
+            )
         """.trimIndent()
 
         db.execSQL(createUsersTable)
@@ -54,37 +56,34 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        if (oldVersion < 3) {
-            db.execSQL("ALTER TABLE $TABLE_NAME ADD COLUMN $COLUMN_CATEGORY TEXT DEFAULT '기타'")
-        }
-        if (oldVersion < 4) {  // 버전 4 추가 (detail 컬럼이 없는 경우 대비)
-            db.execSQL("ALTER TABLE $TABLE_NAME ADD COLUMN $COLUMN_DETAIL TEXT DEFAULT ''")
+        if (oldVersion < 4) {  // ✅ 버전 4 이상에서 날짜 컬럼 추가
+            db.execSQL("ALTER TABLE $TABLE_NAME ADD COLUMN $COLUMN_DATE TEXT DEFAULT ''")
         }
     }
 
-    fun addExpense(amount: Double, detail: String, transactionType: String, category: String): Long {
+    fun addExpense(amount: Double, detail: String, transactionType: String, category: String, date: String): Long {
         val db = writableDatabase
         val values = ContentValues().apply {
             put(COLUMN_AMOUNT, amount)
             put(COLUMN_DETAIL, detail)
             put(COLUMN_TRANSACTION_TYPE, transactionType)
             put(COLUMN_CATEGORY, category)
-
+            put(COLUMN_DATE, date)  // ✅ 날짜 저장
         }
         val newRowId = db.insert(TABLE_NAME, null, values)
         db.close()
         return newRowId
     }
 
-    fun getAllExpensesForUser(): List<Expense> {
+    fun getExpensesByDate(date: String): List<Expense> {
         val db = readableDatabase
         val expenses = mutableListOf<Expense>()
 
         val cursor = db.query(
             TABLE_NAME,
-            arrayOf(COLUMN_ID, COLUMN_AMOUNT, COLUMN_DETAIL, COLUMN_CATEGORY, COLUMN_TRANSACTION_TYPE),
-            null,
-            null,
+            arrayOf(COLUMN_ID, COLUMN_AMOUNT, COLUMN_DETAIL, COLUMN_CATEGORY, COLUMN_TRANSACTION_TYPE, COLUMN_DATE),
+            "$COLUMN_DATE = ?",
+            arrayOf(date),
             null,
             null,
             null
@@ -92,20 +91,18 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
         if (cursor.moveToFirst()) {
             do {
-                val id = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID))  // getLong() 사용
-                val amount = cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_AMOUNT)).toDouble()
+                val id = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID))
+                val amount = cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_AMOUNT))
                 val detail = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DETAIL))
                 val category = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CATEGORY))
-                val transactionType = cursor.getString(cursor.getColumnIndexOrThrow(
-                    COLUMN_TRANSACTION_TYPE
-                ))
+                val transactionType = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TRANSACTION_TYPE))
+                val expenseDate = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE))
 
-                expenses.add(Expense(id, amount, detail, transactionType, category))
+                expenses.add(Expense(id, amount, detail, transactionType, category, expenseDate))
             } while (cursor.moveToNext())
         }
         cursor.close()
         db.close()
         return expenses
     }
-
 }
