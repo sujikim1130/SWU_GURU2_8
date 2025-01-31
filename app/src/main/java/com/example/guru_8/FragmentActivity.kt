@@ -16,7 +16,7 @@ class FragmentActivity : AppCompatActivity() {
         // BottomNavigationView와 연결
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
-        // 첫 화면으로 홈 프래그먼트 설정
+        // 첫 화면으로 캘린더 프래그먼트 설정
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, MainCalenderFragment())
             .commit()
@@ -25,8 +25,8 @@ class FragmentActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             val selectedFragment = when (menuItem.itemId) {
                 R.id.nav_home -> MainCalenderFragment()
-                R.id.nav_stats -> ExpenseFragment()
-                R.id.nav_settings -> StatsFragment()
+                R.id.nav_stats -> StatsFragment()
+                R.id.nav_expense -> ExpenseFragment()
                 else -> null
             }
             selectedFragment?.let {
