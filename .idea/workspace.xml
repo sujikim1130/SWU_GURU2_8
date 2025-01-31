@@ -20,6 +20,11 @@
           <theme>@style/Theme.FinancialLedgerApp</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/main_calendar.xml">
+        <config>
+          <theme>@style/Theme.GURU_8</theme>
+        </config>
+      </layout>
     </layouts>
   </component>
   <component name="AutoImportSettings">
@@ -27,8 +32,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c710b157-74b5-4fb6-9a7d-fb2850cfaf48" name="Changes" comment="최종 수정">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/financialledgerapp/ExoanseFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/financialledgerapp/ExpenseFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/financialledgerapp/ExpenseAdapter.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +44,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\SUJIS\.android\avd\GURU_8_Pixel_2_API_35.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\SEC\.android\avd\Pixel_2_API_35.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -110,7 +116,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/sujikim1130/SWU_GURU2_8.git&quot;,
-    &quot;accountId&quot;: &quot;34b4df7e-4071-4d32-aa70-bc2f9be15c0f&quot;
+    &quot;accountId&quot;: &quot;4c0d71e0-c259-46a2-982f-66e85bb87cd6&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -133,7 +139,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;sub2&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;sub1&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/joungwon/AndroidStudioProjects/SWU_GURU2_8&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
