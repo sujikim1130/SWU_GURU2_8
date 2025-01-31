@@ -14,18 +14,28 @@
         android:id="@+id/ivLogo"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/logoexample"
+        android:src="@drawable/logo_images"
         android:contentDescription="앱 로고"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/Brown_green"/>
 
     <!-- 로그인 제목 -->
     <TextView
         android:id="@+id/tvLoginTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="모았죠"
+        android:text="Loop"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="@color/Brown_green"/>
+
+    <TextView
+        android:id="@+id/tvsubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Look Over Old Purchases"
+        android:textSize="20sp"
+        android:textStyle="normal"
         android:layout_marginBottom="24dp" />
 
     <!-- 이메일 입력 필드 -->
@@ -59,7 +69,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="로그인"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/Beige"
+        android:textColor="@color/black"/>
 
     <!-- 회원가입으로 이동 버튼 -->
     <Button
@@ -67,5 +79,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="회원가입으로 이동"
-        android:background="#CCCCCC" />
+        android:backgroundTint="@color/Beige"
+        android:textColor="@color/black"/>
 </LinearLayout>
