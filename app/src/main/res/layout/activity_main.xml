@@ -17,7 +17,7 @@
         android:src="@drawable/logo_images"
         android:contentDescription="앱 로고"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="@color/Brown_green"/>
+        android:backgroundTint="@color/green"/>
 
     <!-- 로그인 제목 -->
     <TextView
@@ -27,7 +27,7 @@
         android:text="Loop"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/Brown_green"/>
+        android:textColor="@color/green"/>
 
     <TextView
         android:id="@+id/tvsubTitle"
@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:text="로그인"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/Beige"
+        android:backgroundTint="@color/beige"
         android:textColor="@color/black"/>
 
     <!-- 회원가입으로 이동 버튼 -->
@@ -79,6 +79,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="회원가입으로 이동"
-        android:backgroundTint="@color/Beige"
+        android:backgroundTint="@color/beige"
         android:textColor="@color/black"/>
 </LinearLayout>

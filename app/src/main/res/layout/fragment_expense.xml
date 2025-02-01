@@ -5,33 +5,34 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/editTextAmount"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="금액을 입력하세요"
-        android:inputType="numberDecimal"
-        android:paddingEnd="40dp"
-        android:background="@color/ivory"/>
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/amountUnitTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="-30dp"
-        android:layout_marginEnd="10dp"
-        android:text="원"
-        android:textAlignment="viewEnd"
-        android:textSize="16sp" />
+        <EditText
+            android:id="@+id/editTextAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="금액을 입력하세요"
+            android:inputType="numberDecimal"
+            android:background="@color/ivory"
+            android:paddingEnd="40dp" />
+
+        <TextView
+            android:id="@+id/amountUnitTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="10dp"
+            android:text="원"
+            android:textSize="16sp" />
+    </FrameLayout>
 
     <EditText
         android:id="@+id/editTextDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="상세 내역"
-        android:privateImeOptions="defaultInputMode = korean"
         android:background="@color/ivory"/>
 
     <RadioGroup

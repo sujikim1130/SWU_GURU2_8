@@ -18,9 +18,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:itemTextColor="@color/White_Beige"
+        app:itemTextColor="@color/ivory"
         app:menu="@menu/bottom_nav_menu"
-        app:backgroundTint="@color/Brown_green"
+        app:backgroundTint="@color/green"
         app:labelVisibilityMode="labeled" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
