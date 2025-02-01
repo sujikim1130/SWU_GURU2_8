@@ -5,11 +5,10 @@
     <color name="gray">#888888</color>
     <color name="red">#FF6347</color>
     <color name="blue">#4169E1</color>
-    <color name="White_Yellow">#FFFFEC</color>
-    <color name="White_Beige">#F1E4C3</color>
-    <color name="Beige">#C6A969</color>
-    <color name="Brown_green">#597E52</color>
 
+    <color name="ivory">#FFFFEC</color>
+    <color name="beige">#F1E4C3</color>
+    <color name="brown">#C6A969</color>
+    <color name="green">#597E52</color>
 </resources>
-
 

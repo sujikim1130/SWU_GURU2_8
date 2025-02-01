@@ -13,7 +13,8 @@
         android:layout_weight="1"
         android:textSize="18sp"
         android:gravity="start"
-        android:text="내역" />
+        android:text="내역"
+        android:background="@color/beige"/>
 
     <TextView
         android:id="@+id/textAmount"
@@ -21,7 +22,8 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:gravity="end"
-        android:text="- 0원" />
+        android:text="- 0원"
+        android:background="@color/beige"/>
 
     <!-- 만족도 버튼 (이모지 사용) -->
     <ImageView
