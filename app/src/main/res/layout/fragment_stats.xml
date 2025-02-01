@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFEC"
     tools:context=".fragment.StatsFragment">
 
     <!-- 월별 통계를 표시할 원형 차트 -->
@@ -22,7 +23,7 @@
         android:id="@+id/currentSpendingText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="현재 지출: 0원 / 한도: 0원"
+        android:text="현재 지출: 0원 | 한도: 0원"
         android:textSize="16sp"
         android:textColor="@color/black"
         android:gravity="center"
@@ -52,6 +53,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="저장"
+        android:backgroundTint="#597E52"
+        android:textColor="#FFFFFF"
         app:layout_constraintTop_toTopOf="@id/limitInput"
         app:layout_constraintStart_toEndOf="@id/limitInput"
         app:layout_constraintEnd_toEndOf="parent"

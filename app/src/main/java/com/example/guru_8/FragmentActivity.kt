@@ -11,7 +11,7 @@ class FragmentActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_example_for_fragment)
+        setContentView(R.layout.activity_fragment)
 
         // BottomNavigationView와 연결
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
