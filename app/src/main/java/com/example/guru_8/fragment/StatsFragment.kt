@@ -2,11 +2,13 @@ package com.example.guru_8.fragment
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guru_8.data.DataBaseHelper
@@ -77,22 +79,13 @@ class StatsFragment : Fragment() {
         setupRecyclerView()
         loadSpendingDataFromDatabase()
 
-
-
-        /*fun insertTestData() {
-            // DBManager를 통해 데이터베이스에 임의의 테스트 데이터 삽입
-            dbManager.addExpense(5000.0, "커피", "expense", "식비")
-            dbManager.addExpense(20000.0, "영화", "expense", "문화")
-            dbManager.addExpense(150000.0, "월급", "income", "수입")
-
-            // 데이터 삽입 후 UI 업데이트를 위해 데이터 다시 로드
-            loadSpendingDataFromDatabase()
-
-            Toast.makeText(requireContext(), "테스트 데이터가 추가되었습니다.", Toast.LENGTH_SHORT).show()
+        setFragmentResultListener("updateStats") { _, _ ->
+            Log.d("StatsFragment", "🟢 setFragmentResultListener 호출됨 - 데이터 갱신 시작")
+            requireActivity().runOnUiThread {
+                loadSpendingDataFromDatabase()
+            } // 리스트 및 차트 갱신
         }
-        if (spendingList.isEmpty()) {
-            insertTestData()
-        }*/
+
     }
 
     private fun setupRecyclerView() {
@@ -102,23 +95,28 @@ class StatsFragment : Fragment() {
 
     private fun loadSpendingDataFromDatabase() {
         val expenses = dbManager.getAllExpensesForUser() // DB 지출 받아오기
+        Log.d("StatsFragment", "🔵 불러온 지출 내역 개수: ${expenses.size}")
+
         currentSpending = 0
         spendingList.clear()
 
         for (expense in expenses) { //지출 항목만 리스트에 저장
-            if (expense.transactionType == "expense") {
+            if (expense.transactionType == "지출") {
                 spendingList.add(expense)
                 currentSpending += expense.amount.toInt()
             }
         }
+        Log.d("StatsFragment", "🟣 현재 지출 금액: $currentSpending")
 
-        spendingRecyclerView.adapter?.notifyDataSetChanged()
-        updateSpendingText()
-        updatePieChart()
+        requireActivity().runOnUiThread {
+            spendingRecyclerView.adapter?.notifyDataSetChanged()
+            updateSpendingText()
+            updatePieChart()
+        }
     }
 
     private fun updateSpendingText() {
-        currentSpendingText.text = "현재 지출: ${currentSpending}원 / 한도: ${spendingLimit}원"
+        currentSpendingText.text = "현재 지출: ${currentSpending}원 | 한도: ${spendingLimit}원"
     }
 
     private fun updatePieChart() {
@@ -126,7 +124,7 @@ class StatsFragment : Fragment() {
             .mapValues { entry -> entry.value.sumOf { it.amount } }
 
         val entries = categoryMap.map { PieEntry(it.value.toFloat(), it.key) }
-        val dataSet = PieDataSet(entries, "카테고리별 지출")
+        val dataSet = PieDataSet(entries, " ")
         dataSet.colors = ColorTemplate.MATERIAL_COLORS.toList()
         dataSet.valueTextSize = 14f
 
