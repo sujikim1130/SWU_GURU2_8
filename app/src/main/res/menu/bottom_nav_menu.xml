@@ -8,8 +8,4 @@
     <item
         android:id="@+id/nav_settings"
         android:title="통계" />
-    <!-- Expense 항목 추가 -->
-    <item
-        android:id="@+id/nav_expense"
-        android:title="지출 관리" />
 </menu>

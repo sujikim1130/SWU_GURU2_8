@@ -13,15 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GURU_8"
         tools:targetApi="35">
-
-        <activity android:name=".MainActivity" android:exported="true">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            tools:ignore="MissingClass">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".SignupActivity" />
         <activity android:name=".FragmentActivity" />
+
     </application>
+
 </manifest>

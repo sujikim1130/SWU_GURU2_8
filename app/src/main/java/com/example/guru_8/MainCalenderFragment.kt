@@ -32,10 +32,10 @@ class MainCalenderFragment : Fragment() {
         // ProgressBar 및 텍스트 업데이트
         updateProgressBar()
 
-        // ✅ 달력에서 날짜 선택 시 `ExpenseFragment`로 이동
+        // 달력 날짜 선택 이벤트
         binding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val selectedDate = "$year-${month + 1}-$dayOfMonth"
-            navigateToFragment(ExpenseFragment.newInstance(selectedDate)) // ✅ 추가된 부분
+            navigateToFragment(HomeFragment.newInstance(selectedDate))
         }
 
         return binding.root
@@ -58,7 +58,7 @@ class MainCalenderFragment : Fragment() {
 
     private fun navigateToFragment(fragment: Fragment) {
         parentFragmentManager.commit {
-            replace(R.id.fragment_container, fragment)  // ✅ fragment_container 안에 `ExpenseFragment` 표시
+            replace(R.id.fragment_container, fragment)
             addToBackStack(null)
         }
     }
