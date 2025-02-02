@@ -8,4 +8,5 @@
     <item
         android:id="@+id/nav_settings"
         android:title="통계" />
+
 </menu>

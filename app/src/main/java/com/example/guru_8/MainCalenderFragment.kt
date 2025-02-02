@@ -1,4 +1,4 @@
-package com.example.guru_8.fragment
+package com.example.guru_8
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import com.example.guru_8.R
 import com.example.guru_8.databinding.FragmentMainCalenderBinding
+import com.example.guru_8.fragment.ExpenseFragment
 
 class MainCalenderFragment : Fragment() {
 
@@ -32,10 +32,10 @@ class MainCalenderFragment : Fragment() {
         // ProgressBar 및 텍스트 업데이트
         updateProgressBar()
 
-        // 달력 날짜 선택 이벤트
+        // ✅ 달력에서 날짜 선택 시 `ExpenseFragment`로 이동
         binding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val selectedDate = "$year-${month + 1}-$dayOfMonth"
-            navigateToFragment(HomeFragment.newInstance(selectedDate))
+            navigateToFragment(ExpenseFragment.newInstance(selectedDate)) // ✅ 추가된 부분
         }
 
         return binding.root
@@ -58,7 +58,7 @@ class MainCalenderFragment : Fragment() {
 
     private fun navigateToFragment(fragment: Fragment) {
         parentFragmentManager.commit {
-            replace(R.id.fragment_container, fragment)
+            replace(R.id.fragment_container, fragment)  // ✅ fragment_container 안에 `ExpenseFragment` 표시
             addToBackStack(null)
         }
     }

@@ -20,6 +20,8 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
+import java.text.SimpleDateFormat
+import java.util.*
 
 class StatsFragment : Fragment() {
 
@@ -94,19 +96,21 @@ class StatsFragment : Fragment() {
     }
 
     private fun loadSpendingDataFromDatabase() {
-        val expenses = dbManager.getAllExpensesForUser() // DB 지출 받아오기
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val currentDate = dateFormat.format(Date()) // 현재 날짜 가져오기
+
+        val expenses = dbManager.getAllExpensesForUser(currentDate) // ✅ 날짜 전달
         Log.d("StatsFragment", "🔵 불러온 지출 내역 개수: ${expenses.size}")
 
         currentSpending = 0
         spendingList.clear()
 
-        for (expense in expenses) { //지출 항목만 리스트에 저장
+        for (expense in expenses) {
             if (expense.transactionType == "지출") {
                 spendingList.add(expense)
                 currentSpending += expense.amount.toInt()
             }
         }
-        Log.d("StatsFragment", "🟣 현재 지출 금액: $currentSpending")
 
         requireActivity().runOnUiThread {
             spendingRecyclerView.adapter?.notifyDataSetChanged()
@@ -123,7 +127,21 @@ class StatsFragment : Fragment() {
         val categoryMap = spendingList.groupBy { it.category }
             .mapValues { entry -> entry.value.sumOf { it.amount } }
 
+        if (categoryMap.isEmpty()) {
+            Log.d("StatsFragment", "🔴 카테고리별 데이터가 없음. 차트를 업데이트하지 않습니다.")
+            pieChart.clear()
+            pieChart.invalidate()
+            return
+        }
+
         val entries = categoryMap.map { PieEntry(it.value.toFloat(), it.key) }
+        if (entries.isEmpty()) {
+            Log.d("StatsFragment", "🔴 PieChart 데이터가 없음.")
+            pieChart.clear()
+            pieChart.invalidate()
+            return
+        }
+
         val dataSet = PieDataSet(entries, " ")
         dataSet.colors = ColorTemplate.MATERIAL_COLORS.toList()
         dataSet.valueTextSize = 14f
@@ -134,4 +152,5 @@ class StatsFragment : Fragment() {
         pieChart.animateY(1000)
         pieChart.invalidate()
     }
+
 }

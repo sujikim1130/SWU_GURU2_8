@@ -3,7 +3,6 @@ package com.example.guru_8
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.guru_8.fragment.ExpenseFragment
-import com.example.guru_8.fragment.MainCalenderFragment
 import com.example.guru_8.fragment.StatsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
