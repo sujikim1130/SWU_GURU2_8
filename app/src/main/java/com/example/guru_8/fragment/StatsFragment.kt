@@ -20,8 +20,7 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
-import java.text.SimpleDateFormat
-import java.util.*
+
 
 class StatsFragment : Fragment() {
 
@@ -96,16 +95,16 @@ class StatsFragment : Fragment() {
     }
 
     private fun loadSpendingDataFromDatabase() {
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val currentDate = dateFormat.format(Date()) // 현재 날짜 가져오기
+        val expenses = dbManager.getAllExpenses() // 🔥 날짜 조건 제거한 전체 데이터 불러오기
 
-        val expenses = dbManager.getAllExpensesForUser(currentDate) // ✅ 날짜 전달
-        Log.d("StatsFragment", "🔵 불러온 지출 내역 개수: ${expenses.size}")
+        Log.d("StatsFragment", "🔵 불러온 전체 지출 개수: ${expenses.size}")
 
         currentSpending = 0
         spendingList.clear()
 
         for (expense in expenses) {
+            Log.d("StatsFragment", "🟣 불러온 지출 항목: ${expense.category}, ${expense.amount} 원, 날짜: ${expense.date}")
+
             if (expense.transactionType == "지출") {
                 spendingList.add(expense)
                 currentSpending += expense.amount.toInt()
@@ -118,6 +117,8 @@ class StatsFragment : Fragment() {
             updatePieChart()
         }
     }
+
+
 
     private fun updateSpendingText() {
         currentSpendingText.text = "현재 지출: ${currentSpending}원 | 한도: ${spendingLimit}원"

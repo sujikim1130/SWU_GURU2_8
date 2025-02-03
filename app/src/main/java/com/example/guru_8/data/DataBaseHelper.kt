@@ -75,6 +75,14 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return newRowId
     }
 
+    fun deleteExpense(expenseId: Long): Boolean {
+        val db = writableDatabase
+        val result = db.delete(TABLE_NAME, "$COLUMN_ID = ?", arrayOf(expenseId.toString()))
+        db.close()
+        return result > 0 // 삭제 성공 여부 반환
+    }
+
+
     fun getAllExpensesForUser(data:String): List<Expense> {
         val db = readableDatabase
         val expenses = mutableListOf<Expense>()
@@ -105,5 +113,55 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.close()
         return expenses
     }
+
+    fun getAllExpenses(): List<Expense> {
+        val db = readableDatabase
+        val expenses = mutableListOf<Expense>()
+
+        val cursor = db.query(
+            TABLE_NAME,
+            arrayOf(COLUMN_ID, COLUMN_AMOUNT, COLUMN_DETAIL, COLUMN_CATEGORY, COLUMN_TRANSACTION_TYPE, COLUMN_DATE),
+            null,  // 🔥 날짜 조건 제거
+            null,
+            null,
+            null,
+            "$COLUMN_DATE DESC" // 최신 순 정렬
+        )
+
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID))
+                val amount = cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_AMOUNT))
+                val detail = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DETAIL))
+                val category = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CATEGORY))
+                val transactionType = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TRANSACTION_TYPE))
+                val expenseDate = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE))
+
+                expenses.add(Expense(id, amount, detail, transactionType, category, expenseDate))
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        db.close()
+        return expenses
+    }
+    fun getTotalSpending(): Int {
+        val db = readableDatabase
+        var totalSpending = 0
+
+        val cursor = db.rawQuery(
+            "SELECT SUM($COLUMN_AMOUNT) FROM $TABLE_NAME WHERE $COLUMN_TRANSACTION_TYPE = ?",
+            arrayOf("지출")
+        )
+
+        if (cursor.moveToFirst()) {
+            totalSpending = cursor.getInt(0) // 첫 번째 컬럼의 값을 가져옴
+        }
+
+        cursor.close()
+        db.close()
+        return totalSpending
+    }
+
+
 
 }

@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:gravity="center_vertical">
 
     <TextView
         android:id="@+id/textDetail"
@@ -23,27 +24,39 @@
         android:textSize="18sp"
         android:gravity="end"
         android:text="- 0원"
-        android:background="@color/beige"/>
+        android:background="@color/beige"
+        android:layout_marginEnd="8dp"/>
 
     <!-- 만족도 버튼 (이모지 사용) -->
     <ImageView
         android:id="@+id/thumbsUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:src="@drawable/thumbs_up"
         app:tint="@color/blue"
-        android:padding="8dp"
+        android:padding="4dp"
         android:clickable="true"
-        android:focusable="true" />
+        android:focusable="true"
+        android:layout_marginEnd="8dp" />
 
     <ImageView
         android:id="@+id/thumbsDown"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/thumbs_up"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/thumbs_down"
         app:tint="@color/red"
-        android:padding="8dp"
+        android:padding="4dp"
         android:clickable="true"
-        android:focusable="true" />
+        android:focusable="true"
+        android:layout_marginEnd="8dp" />
 
+    <!-- 🛑 삭제 버튼: 가장 오른쪽으로 배치 -->
+    <ImageView
+        android:id="@+id/deleteButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_delete"
+        android:contentDescription="삭제"
+        android:padding="4dp"
+        android:layout_gravity="end"/>
 </LinearLayout>
