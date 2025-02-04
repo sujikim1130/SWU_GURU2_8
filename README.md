@@ -1,23 +1,55 @@
 # SWU_GURU2_8
  
 ### 전체 파일 구조  
-```
-📁 com.example.guru_8
-├── 📂 adapters
-│   ├── 📝 ExpenseAdapter.kt
-│   └── 📝 SpendingAdapter.kt
-├── 📂 data
-│   ├── 📝 DataBaseHelper.kt
-│   └── 📝 Expense.kt
-├── 📂 fragment
-│   ├── 📝 ExpenseFragment.kt
-│   └── 📝 MainCalenderFragmnet.kt
-│   └── 📝 StatusFragmnet.kt
-├── 📝 FragmentActivity.kt
-├── 📝 MainActivity.kt
-├── 📝 SingupActivity.kt
-└── 📂 res  
-    ├── 📁 layout  
-    │   ├── 📝 activity_main.xml  
-    │   └── 📝 item_expense.xml  
-```
+- main/
+  - AndroidManifest.xml
+  - java/
+    - com/
+      - example/
+        - guru_8/
+          - FragmentActivity.kt
+          - MainActivity.kt
+          - SignupActivity.kt
+          - adapters/
+            - ExpenseAdapter.kt
+            - SpendingAdapter.kt
+          - data/
+            - DataBaseHelper.kt
+            - Expense.kt
+          - fragment/
+            - ExpenseFragment.kt
+            - MainCalenderFragment.kt
+            - StatsFragment.kt
+  - res/
+    - drawable/
+      - button_background.xml
+      - ic_delete.xml
+      - ic_launcher_background.xml
+      - ic_launcher_foreground.xml
+      - logo_images.png
+      - progress_bar_over_limit.xml
+      - progress_bar_style.xml
+      - thumbs_down.xml
+      - thumbs_down_selector.xml
+      - thumbs_up.xml
+      - thumbs_up_selector.xml
+    - fragments/
+    - layout/
+      - activity_fragment.xml
+      - activity_main.xml
+      - activity_signup.xml
+      - fragment_expense.xml
+      - fragment_main_calender.xml
+      - fragment_stats.xml
+      - item_expense.xml
+      - item_spending.xml
+      - main_calender.xml
+    - menu/
+      - bottom_nav_menu.xml
+    - values/
+      - colors.xml
+      - strings.xml
+      - thems.xml
+    - xml/
+      - backup_rules.xml
+      - data_extraction_rules.xml
