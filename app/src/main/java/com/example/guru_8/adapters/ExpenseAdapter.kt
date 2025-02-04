@@ -1,5 +1,6 @@
 package com.example.guru_8.adapters
 
+import android.graphics.PorterDuff
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,6 +43,43 @@ class ExpenseAdapter(
         }
         holder.textDetail.setTextColor(ContextCompat.getColor(holder.itemView.context, textColor))
         holder.textAmount.setTextColor(ContextCompat.getColor(holder.itemView.context, textColor))
+
+        // Thumbs Up 버튼 상태
+        holder.thumbsUp.setSelected(expense.isSelectedThumbsUp)
+        holder.thumbsUp.setOnClickListener {
+            expense.isSelectedThumbsUp = !expense.isSelectedThumbsUp
+            expense.isSelectedThumbsDown = false  // thumbsDown 해제
+            notifyItemChanged(position)
+        }
+
+        // Thumbs Down 버튼 상태
+        holder.thumbsDown.setSelected(expense.isSelectedThumbsDown)
+        holder.thumbsDown.setOnClickListener {
+            expense.isSelectedThumbsDown = !expense.isSelectedThumbsDown
+            expense.isSelectedThumbsUp = false  // thumbsUp 해제
+            notifyItemChanged(position)
+        }
+
+        // 색상 변경 (thumbsUp, thumbsDown 선택 상태에 따라)
+        if (expense.isSelectedThumbsUp) {
+            holder.thumbsUp.setColorFilter(ContextCompat.getColor(holder.itemView.context,
+                R.color.blue
+            ), PorterDuff.Mode.SRC_IN)
+        } else {
+            holder.thumbsUp.setColorFilter(ContextCompat.getColor(holder.itemView.context,
+                R.color.gray
+            ), PorterDuff.Mode.SRC_IN)
+        }
+
+        if (expense.isSelectedThumbsDown) {
+            holder.thumbsDown.setColorFilter(ContextCompat.getColor(holder.itemView.context,
+                R.color.red
+            ), PorterDuff.Mode.SRC_IN)
+        } else {
+            holder.thumbsDown.setColorFilter(ContextCompat.getColor(holder.itemView.context,
+                R.color.gray
+            ), PorterDuff.Mode.SRC_IN)
+        }
 
         // 🛑 삭제 버튼 클릭 이벤트 추가
         holder.deleteButton.setOnClickListener {
