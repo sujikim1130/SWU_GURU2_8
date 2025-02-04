@@ -8,41 +8,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.guru_8.data.Expense
 import com.example.guru_8.R
 
-/**
- * RecyclerView 어댑터: 지출 내역을 리스트 형태로 표시하는 클래스
- */
-class SpendingAdapter(private val spendingList: List<Expense>) :
+class SpendingAdapter(private val spendingList: List<Expense>) : //지출항목을 리스트 형태로 표시
     RecyclerView.Adapter<SpendingAdapter.SpendingViewHolder>() {
 
+    inner class SpendingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) { //지출 금액과 카테고리를 표시
+        private val amountText: TextView = itemView.findViewById(R.id.amountText)
+        private val categoryText: TextView = itemView.findViewById(R.id.categoryText)
+
+        fun bind(expense: Expense) {
+            amountText.text = "${expense.amount.toInt()}원"
+            categoryText.text = expense.category
+        }
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpendingViewHolder {
-        // 개별 항목의 뷰 생성
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_spending, parent, false)
         return SpendingViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: SpendingViewHolder, position: Int) {
-        // 해당 위치의 데이터를 ViewHolder에 바인딩
         holder.bind(spendingList[position])
     }
 
-    override fun getItemCount(): Int {
-        return spendingList.size // 리스트 크기 반환
-    }
-
-    /**
-     * 개별 지출 항목을 표시하는 ViewHolder
-     */
-    inner class SpendingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val amountText: TextView = itemView.findViewById(R.id.amountText) // 지출 금액 표시
-        private val categoryText: TextView = itemView.findViewById(R.id.categoryText) // 지출 카테고리 표시
-
-        /**
-         * UI에 데이터를 설정하는 함수
-         */
-        fun bind(expense: Expense) {
-            amountText.text = "${expense.amount.toInt()}원" // 금액 표시
-            categoryText.text = expense.category // 카테고리 표시
-        }
-    }
+    override fun getItemCount() = spendingList.size
 }
