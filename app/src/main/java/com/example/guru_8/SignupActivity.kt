@@ -10,9 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.guru_8.data.DataBaseHelper
 import com.example.guru_8.databinding.ActivitySignupBinding
 
+/**
+ * 회원가입 기능을 제공하는 액티비티
+ */
 class SignupActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySignupBinding
-    private lateinit var dbHelper: DataBaseHelper
+    private lateinit var binding: ActivitySignupBinding // View Binding 사용
+    private lateinit var dbHelper: DataBaseHelper // 데이터베이스 도우미 클래스
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +24,7 @@ class SignupActivity : AppCompatActivity() {
 
         dbHelper = DataBaseHelper(this)
 
+        // 회원가입 버튼 클릭 이벤트
         binding.btnSignup.setOnClickListener {
             val name = binding.etName.text.toString()
             val nickname = binding.etNickname.text.toString()
@@ -28,6 +32,7 @@ class SignupActivity : AppCompatActivity() {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
 
+            // 입력값 검증
             if (name.isBlank() || nickname.isBlank() || phone.isBlank() || email.isBlank() || password.isBlank()) {
                 Toast.makeText(this, "모든 정보를 입력하세요", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -48,6 +53,7 @@ class SignupActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            // 데이터베이스에 사용자 정보 저장
             val success = saveUserToDatabase(name, nickname, phone, email, password)
             if (success) {
                 Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show()
@@ -60,12 +66,16 @@ class SignupActivity : AppCompatActivity() {
             }
         }
 
+        // 로그인 화면으로 이동하는 버튼
         binding.btnGoToLogin.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }
 
+    /**
+     * 사용자 정보를 데이터베이스에 저장하는 함수
+     */
     private fun saveUserToDatabase(name: String, nickname: String, phone: String, email: String, password: String): Boolean {
         val db: SQLiteDatabase = dbHelper.writableDatabase
         val values = ContentValues().apply {

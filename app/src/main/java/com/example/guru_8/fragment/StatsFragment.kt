@@ -1,8 +1,6 @@
 package com.example.guru_8.fragment
 
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,19 +19,21 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
 
-
+/**
+ * 사용자의 지출 통계를 시각적으로 보여주는 프래그먼트
+ */
 class StatsFragment : Fragment() {
 
-    private lateinit var pieChart: PieChart
-    private lateinit var currentSpendingText: TextView
-    private lateinit var limitInput: EditText
-    private lateinit var saveLimitButton: Button
-    private lateinit var spendingRecyclerView: RecyclerView
+    private lateinit var pieChart: PieChart // 카테고리별 지출을 나타내는 원형 차트
+    private lateinit var currentSpendingText: TextView // 현재 지출 금액 표시
+    private lateinit var limitInput: EditText // 지출 한도 입력 필드
+    private lateinit var saveLimitButton: Button // 한도 저장 버튼
+    private lateinit var spendingRecyclerView: RecyclerView // 지출 목록 RecyclerView
 
-    private lateinit var dbManager: DataBaseHelper
-    private var spendingLimit = 0
-    private var currentSpending = 0
-    private val spendingList = mutableListOf<Expense>()
+    private lateinit var dbManager: DataBaseHelper // 데이터베이스 관리자
+    private var spendingLimit = 0 // 설정된 지출 한도
+    private var currentSpending = 0 // 현재 총 지출 금액
+    private val spendingList = mutableListOf<Expense>() // 지출 내역 리스트
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,6 +57,7 @@ class StatsFragment : Fragment() {
         spendingLimit = sharedPreferences.getInt("spendingLimit", 0)
         updateSpendingText()
 
+        // 한도 저장 버튼 클릭 이벤트 설정
         saveLimitButton.setOnClickListener {
             val limitText = limitInput.text.toString()
             if (limitText.isNotEmpty() && limitText.toIntOrNull() != null) {
@@ -64,14 +65,6 @@ class StatsFragment : Fragment() {
                 sharedPreferences.edit().putInt("spendingLimit", spendingLimit).apply()
                 Toast.makeText(requireContext(), "한도가 저장되었습니다: ${spendingLimit}원", Toast.LENGTH_SHORT).show()
                 updateSpendingText()
-
-                if (currentSpending > spendingLimit) {
-                    val excess = currentSpending - spendingLimit
-                    Toast.makeText(requireContext(), "현재 지출이 한도를 초과했습니다! 초과 금액: ${excess}원", Toast.LENGTH_LONG).show()
-                    currentSpendingText.setTextColor(Color.RED) // 텍스트 색상 변경
-                } else {
-                    currentSpendingText.setTextColor(Color.BLACK) // 초과하지 않으면 텍스트 색상 초기화
-                }
             } else {
                 Toast.makeText(requireContext(), "유효한 한도를 입력하세요.", Toast.LENGTH_SHORT).show()
             }
@@ -80,31 +73,32 @@ class StatsFragment : Fragment() {
         setupRecyclerView()
         loadSpendingDataFromDatabase()
 
+        // 다른 프래그먼트에서 데이터 갱신 요청을 받을 경우 처리
         setFragmentResultListener("updateStats") { _, _ ->
-            Log.d("StatsFragment", "🟢 setFragmentResultListener 호출됨 - 데이터 갱신 시작")
             requireActivity().runOnUiThread {
                 loadSpendingDataFromDatabase()
-            } // 리스트 및 차트 갱신
+            }
         }
-
     }
 
+    /**
+     * RecyclerView 설정 함수
+     */
     private fun setupRecyclerView() {
         spendingRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         spendingRecyclerView.adapter = SpendingAdapter(spendingList)
     }
 
+    /**
+     * 데이터베이스에서 지출 내역을 가져와 리스트 및 차트를 갱신하는 함수
+     */
     private fun loadSpendingDataFromDatabase() {
-        val expenses = dbManager.getAllExpenses() // 🔥 날짜 조건 제거한 전체 데이터 불러오기
-
-        Log.d("StatsFragment", "🔵 불러온 전체 지출 개수: ${expenses.size}")
+        val expenses = dbManager.getAllExpenses()
 
         currentSpending = 0
         spendingList.clear()
 
         for (expense in expenses) {
-            Log.d("StatsFragment", "🟣 불러온 지출 항목: ${expense.category}, ${expense.amount} 원, 날짜: ${expense.date}")
-
             if (expense.transactionType == "지출") {
                 spendingList.add(expense)
                 currentSpending += expense.amount.toInt()
@@ -118,31 +112,27 @@ class StatsFragment : Fragment() {
         }
     }
 
-
-
+    /**
+     * 현재 지출 금액을 UI에 업데이트하는 함수
+     */
     private fun updateSpendingText() {
         currentSpendingText.text = "현재 지출: ${currentSpending}원 | 한도: ${spendingLimit}원"
     }
 
+    /**
+     * 원형 차트를 업데이트하는 함수
+     */
     private fun updatePieChart() {
         val categoryMap = spendingList.groupBy { it.category }
             .mapValues { entry -> entry.value.sumOf { it.amount } }
 
         if (categoryMap.isEmpty()) {
-            Log.d("StatsFragment", "🔴 카테고리별 데이터가 없음. 차트를 업데이트하지 않습니다.")
             pieChart.clear()
             pieChart.invalidate()
             return
         }
 
         val entries = categoryMap.map { PieEntry(it.value.toFloat(), it.key) }
-        if (entries.isEmpty()) {
-            Log.d("StatsFragment", "🔴 PieChart 데이터가 없음.")
-            pieChart.clear()
-            pieChart.invalidate()
-            return
-        }
-
         val dataSet = PieDataSet(entries, " ")
         dataSet.colors = ColorTemplate.MATERIAL_COLORS.toList()
         dataSet.valueTextSize = 14f
@@ -153,5 +143,4 @@ class StatsFragment : Fragment() {
         pieChart.animateY(1000)
         pieChart.invalidate()
     }
-
 }
