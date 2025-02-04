@@ -28,8 +28,8 @@ class FragmentActivity : AppCompatActivity() {
         // 하단 네비게이션 바 클릭 리스너 설정
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             val selectedFragment = when (menuItem.itemId) {
-                R.id.nav_home -> MainCalenderFragment.newInstance(selectedDate) // ✅ 수정됨 (선택한 날짜 반영)
-                R.id.nav_stats -> ExpenseFragment.newInstance(selectedDate) // ✅ 수정됨 (선택한 날짜 반영)
+                R.id.nav_home -> MainCalenderFragment.newInstance(selectedDate) 
+                R.id.nav_stats -> ExpenseFragment.newInstance(selectedDate)
                 R.id.nav_settings -> StatsFragment() // 설정 화면
                 else -> null
             }
