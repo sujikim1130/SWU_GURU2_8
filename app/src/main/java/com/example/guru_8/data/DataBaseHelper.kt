@@ -5,12 +5,14 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
+// SQLite 데이터베이스 관리 클래스
 class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
-        const val DATABASE_NAME = "financialApp.db"
-        const val DATABASE_VERSION = 4
+        const val DATABASE_NAME = "financialApp.db" // 데이터베이스 이름
+        const val DATABASE_VERSION = 4 // 데이터베이스 버전
 
+        // 사용자 테이블 및 컬럼 정의
         const val TABLE_USERS = "users"
         const val COLUMN_USER_ID = "id"
         const val COLUMN_USERNAME = "name"
@@ -19,6 +21,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         const val COLUMN_EMAIL = "email"
         const val COLUMN_PASSWORD = "password"
 
+        // 지출 내역 테이블 및 컬럼 정의
         const val TABLE_NAME = "expenses"
         const val COLUMN_ID = "id"
         const val COLUMN_DETAIL = "detail"
@@ -28,6 +31,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         const val COLUMN_DATE = "date"
     }
 
+    // 테이블 생성 (최초 실행 시 한 번 호출됨)
     override fun onCreate(db: SQLiteDatabase) {
         val createUsersTable = """
             CREATE TABLE $TABLE_USERS (
@@ -48,33 +52,36 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 $COLUMN_AMOUNT REAL NOT NULL,
                 $COLUMN_TRANSACTION_TYPE TEXT,
                 $COLUMN_DATE TEXT NOT NULL  
-                )
+            )
         """.trimIndent()
 
-        db.execSQL(createUsersTable)
-        db.execSQL(createExpensesTable)
+        db.execSQL(createUsersTable) // 사용자 테이블 생성
+        db.execSQL(createExpensesTable) // 지출 내역 테이블 생성
     }
 
+    // 데이터베이스 업그레이드 (버전 변경 시 호출됨)
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         if (oldVersion < 4) {  // ✅ 버전 4 이상에서 날짜 컬럼 추가
             db.execSQL("ALTER TABLE $TABLE_NAME ADD COLUMN $COLUMN_DATE TEXT DEFAULT ''")
         }
     }
 
-    fun addExpense(amount: Double, detail: String, transactionType: String, category: String, date: String): Long {        val db = writableDatabase
+    // 지출 내역 추가 함수
+    fun addExpense(amount: Double, detail: String, transactionType: String, category: String, date: String): Long {
+        val db = writableDatabase
         val values = ContentValues().apply {
             put(COLUMN_AMOUNT, amount)
             put(COLUMN_DETAIL, detail)
             put(COLUMN_TRANSACTION_TYPE, transactionType)
             put(COLUMN_CATEGORY, category)
             put(COLUMN_DATE, date)
-
         }
-        val newRowId = db.insert(TABLE_NAME, null, values)
+        val newRowId = db.insert(TABLE_NAME, null, values) // 새로운 행 추가
         db.close()
         return newRowId
     }
 
+    // 지출 내역 삭제 함수
     fun deleteExpense(expenseId: Long): Boolean {
         val db = writableDatabase
         val result = db.delete(TABLE_NAME, "$COLUMN_ID = ?", arrayOf(expenseId.toString()))
@@ -82,8 +89,8 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return result > 0 // 삭제 성공 여부 반환
     }
 
-
-    fun getAllExpensesForUser(data:String): List<Expense> {
+    // 특정 날짜의 모든 지출 내역 조회
+    fun getAllExpensesForUser(data: String): List<Expense> {
         val db = readableDatabase
         val expenses = mutableListOf<Expense>()
 
@@ -99,8 +106,8 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
         if (cursor.moveToFirst()) {
             do {
-                val id = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID))  // getLong() 사용
-                val amount = cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_AMOUNT)).toDouble()
+                val id = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID))
+                val amount = cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_AMOUNT))
                 val detail = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DETAIL))
                 val category = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CATEGORY))
                 val transactionType = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TRANSACTION_TYPE))
@@ -114,6 +121,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return expenses
     }
 
+    // 모든 지출 내역 조회 (최신 순 정렬)
     fun getAllExpenses(): List<Expense> {
         val db = readableDatabase
         val expenses = mutableListOf<Expense>()
@@ -144,6 +152,8 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.close()
         return expenses
     }
+
+    // 총 지출 금액 조회
     fun getTotalSpending(): Int {
         val db = readableDatabase
         var totalSpending = 0
@@ -161,7 +171,4 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.close()
         return totalSpending
     }
-
-
-
 }
